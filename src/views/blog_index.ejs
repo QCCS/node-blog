@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客首页</title>
+    <link href="/css/commom.css" rel="stylesheet">
+    <style>
+        ul,li{
+            list-style: none;
+            padding: 0px;
+        }
+        .comment-wrap{
+        }
+        .comment{
+            background: #eee;
+            margin-bottom: 2px;
+            padding: 6px;
+        }
+
+    </style>
+</head>
+<body>
+
+博客列表
+<ul class="comment-wrap">
+    <% post.forEach(function(item){%>
+    <a href="/api/blog/<%=item.id %>">
+        <li class="comment"><%=item.title %></li>
+    </a>
+    <% }) %>
+</ul>
+
+</body>
+</html>

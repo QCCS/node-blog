@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link href="/css/commom.css" rel="stylesheet">
+    <style>
+
+        ul,li{
+            list-style: none;
+            padding: 0px;
+        }
+        .comment-wrap{
+        }
+        .comment{
+            background: #eee;
+            margin-bottom: 2px;
+            padding: 6px;
+        }
+        .tag-wrap{
+
+        }
+        .tag{
+            background: green;
+            padding: 6px 12px 6px 12px;
+            color: white;
+            border-radius: 4px;
+            float: left;
+            margin-right: 6px;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<%- include("./header.ejs") %>
+
+<h6>
+    作者
+    <%= user_id %>
+</h6>
+
+
+<h3>
+    标题
+    <%= post.title %>
+</h3>
+
+<h5>
+    描述
+    <%= post.desc %>
+</h5>
+
+<p>
+    内容
+    <%- post.content %>
+</p>
+
+<p>评论</p>
+<ul class="comment-wrap">
+    <% comments.forEach(function(item){%>
+    <li class="comment"><%=item.comment %></li>
+    <% }) %>
+</ul>
+<% if(!user){ %>
+    <span>添加评论?请先请登录</span>
+<% } %>
+
+<p>标签</p>
+<ul class="tag-wrap">
+    <% tags.forEach(function(item){%>
+    <li class="tag"><%=item.tag %></li>
+    <% }) %>
+    <div class="clear"></div>
+</ul>
+
+
+<p>
+    收藏
+    <%= likes.length %>
+</p>
+<p>
+    阅读量
+    <%= reads.length %>
+</p>
+</body>
+</html>

@@ -1,0 +1,2 @@
+config.json 是 sequelize 的配置文件；
+如果不用 sequelize 可以不要此文件，直接手动创建表
