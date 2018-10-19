@@ -104,7 +104,7 @@ var commandJson = {
         com: 'npm run webpack'
     },
     runDev: {
-        desc: "打包开发环境",
+        desc: "运行开发环境",
         com: 'npm run dev'
     },
     buildTest: {
