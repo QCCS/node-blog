@@ -1,14 +1,22 @@
 //userRole
-//role userRole
-
+import consoleNote from '../../utils/consoleNote';
 import userRoleService from '../../service/userRole/userRoleService';
-
 async function createUserRole(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
-    let userRole = await userRoleService.createUserRole(user.id, data.name, data.post_id);
-    ctx.body = userRole;
-    console.log(userRole);
+    let userRole = null;
+    try {
+        userRole = await userRoleService.createUserRole(user.id,data.user_id, data.role_id);
+        ctx.body = userRole;
+    } catch (e){
+        userRole = {
+            err:"参数错误",
+            body:["user_id","role_id"],
+        };
+        consoleNote(e);
+    } finally {
+        ctx.body = userRole;
+    }
 }
 
 async function deleteUserRole(ctx) {

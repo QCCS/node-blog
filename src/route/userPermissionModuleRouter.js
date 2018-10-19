@@ -29,23 +29,23 @@ router
     .get('/role/:id', roleController.getRole)
     .get('/role', roleController.getAllRole)
 
-    .post('/role/permission', rolePermissionController.createRolePermission)
-    .delete('/role/permission/:id', rolePermissionController.deleteRolePermission)
-    .put('/role/permission', rolePermissionController.updateRolePermission)
-    .get('/role/permission/:id', rolePermissionController.getRolePermission)
-    .get('/role/permission', rolePermissionController.getAllRolePermission)
-
-    .post('/user/role', userRoleController.createUserRole)
-    .delete('/user/role/:id', userRoleController.deleteUserRole)
-    .put('/user/role', userRoleController.updateUserRole)
-    .get('/user/role/:id', userRoleController.getUserRole)
-    .get('/user/role', userRoleController.getAllUserRole)
-
     .post('/permission',permissionController.createPermission)
     .delete('/permission/:id',permissionController.deletePermission )
     .put('/permission',permissionController.updatePermission)
     .get('/permission/:id', permissionController.getPermission)
-    .get('/permission',permissionController.getAllPermission );
+    .get('/permission',permissionController.getAllPermission )
+
+    .post('/roles/permissions', rolePermissionController.createRolePermission)
+    .delete('/roles/permissions/:id', rolePermissionController.deleteRolePermission)
+    .put('/roles/permissions', rolePermissionController.updateRolePermission)
+    .get('/roles/permissions/:id', rolePermissionController.getRolePermission)
+    .get('/roles/permissions', rolePermissionController.getAllRolePermission)
+
+    .post('/users/roles', userRoleController.createUserRole)
+    .delete('/users/roles/:id', userRoleController.deleteUserRole)
+    .put('/users/roles', userRoleController.updateUserRole)
+    .get('/users/roles/:id', userRoleController.getUserRole)
+    .get('/users/roles', userRoleController.getAllUserRole);
 
 export default {
     router: router,

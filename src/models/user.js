@@ -27,10 +27,16 @@ let user = sequelize.define('user',
             type: Sequelize.STRING,
             allowNull: true,
         },
+        status: {
+            type: Sequelize.INTEGER,
+            allowNull: true,
+        },
+        created_by: {
+            type: Sequelize.INTEGER,
+            allowNull: true,
+        },
     },
     {
-        timestamps: false,//不要默认时间，不然默认生成时间
-        // tableName: 'user',
         freezeTableName: true // Model 对应的表名将与model名相同
     }
 );

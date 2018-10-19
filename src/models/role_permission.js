@@ -11,6 +11,14 @@ let role_permission = sequelize.define('role_permission',
             primaryKey: true,
             autoIncrement: true,
         },
+        created_by: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
+        },
         role_id: {
             type: Sequelize.INTEGER,
             allowNull: false,

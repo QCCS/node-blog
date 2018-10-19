@@ -1,11 +1,23 @@
+import consoleNote from '../../utils/consoleNote';
 import postCommentService from '../../service/postComment/postCommentService';
+
 async function createPostComment(ctx) {
     let data = ctx.request.body;
     //事务
     //需要插入 post_postComment
-    let postComment = await postCommentService.createPostComment(data.post_id,data.comment_id);
-    ctx.body = postComment;
-    console.log(postComment);
+    let postComment = null;
+    try {
+        postComment = await postCommentService.createPostComment(data.post_id,data.comment_id);
+        ctx.body = postComment;
+    } catch (e){
+        postComment = {
+            err:"参数错误",
+            body:["post_id","comment_id"],
+        };
+        consoleNote(e);
+    } finally {
+        ctx.body = postComment;
+    }
 }
 async function deletePostComment(ctx) {
     let b = await postCommentService.deletePostComment(ctx.params.id);

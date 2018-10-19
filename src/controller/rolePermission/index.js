@@ -1,13 +1,23 @@
 //role rolePermission
-
+import consoleNote from '../../utils/consoleNote';
 import rolePermissionService from '../../service/rolePermission/rolePermissionService';
 
 async function createRolePermission(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
-    let rolePermission = await rolePermissionService.createRolePermission(user.id, data.name, data.post_id);
-    ctx.body = rolePermission;
-    console.log(rolePermission);
+    let rolePermission = null;
+    try {
+        rolePermission = await rolePermissionService.createRolePermission(user.id, data.role_id, data.permission_id);
+        ctx.body = rolePermission;
+    } catch (e){
+        rolePermission = {
+            err:"参数错误",
+            body:["role_id","permission_id"],
+        };
+        consoleNote(e);
+    } finally {
+        ctx.body = rolePermission;
+    }
 }
 
 async function deleteRolePermission(ctx) {
@@ -20,7 +30,7 @@ async function deleteRolePermission(ctx) {
 async function updateRolePermission(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
-    let rolePermission = await rolePermissionService.updateRolePermission(user.id, data.id, data.name);
+    let rolePermission = await rolePermissionService.updateRolePermission(user.id, data.role_id, data.permission_id);
     ctx.body = rolePermission;
     console.log(rolePermission);
 }

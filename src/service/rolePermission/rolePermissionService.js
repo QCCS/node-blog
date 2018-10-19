@@ -1,8 +1,9 @@
-import rolePermission from '../../models/refresh_token';
-async function createRolePermission(user_id, permission_id) {
+import rolePermission from '../../models/role_permission';
+async function createRolePermission(user_id, role_id,permission_id) {
     let res = await rolePermission.create(
         {
-            user_id,
+            created_by:user_id,
+            role_id,
             permission_id
         },
 
@@ -20,11 +21,12 @@ async function deleteRolePermission(user_id, id) {
     return res;
 }
 
-async function updateRolePermission(user_id, id, permission_id) {
+async function updateRolePermission(user_id, id, permission_id,role_id) {
     let res = await rolePermission.update(
         {
             user_id,
-            permission_id
+            permission_id,
+            role_id
         },
         {
             where: {

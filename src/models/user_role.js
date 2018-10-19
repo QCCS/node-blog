@@ -11,6 +11,14 @@ let user_role = sequelize.define('user_role',
             primaryKey: true,
             autoIncrement: true,
         },
+        created_by: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            }
+        },
         user_id: {
             type: Sequelize.INTEGER,
             allowNull: false,

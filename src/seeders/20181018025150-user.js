@@ -7,13 +7,15 @@ module.exports = {
                 name: 'admin1',
                 password: 'mac123',
                 mobile: '15921552946',
-                email: '15921552946@qq.com'
+                email: '15921552946@qq.com',
+                status:0,
             },
             {
                 name: 'admin2',
                 password: 'mac123',
                 mobile: '15921552947',
-                email: '15921552947@qq.com'
+                email: '15921552947@qq.com',
+                status:0,
             }
         ], {});
     },

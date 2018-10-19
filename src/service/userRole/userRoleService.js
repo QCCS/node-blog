@@ -1,7 +1,8 @@
-import userRole from '../../models/refresh_token';
-async function createUserRole(user_id, role_id) {
+import userRole from '../../models/user_role';
+async function createUserRole(created_by,user_id, role_id) {
     let res = await userRole.create(
         {
+            created_by,
             user_id,
             role_id
         },
