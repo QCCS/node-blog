@@ -1,9 +1,9 @@
 import permission from '../../models/permission';
 
-async function createPermission(id, name) {
+async function createPermission(user_id, name) {
     let res = await permission.create({
-        id: id,
-        name: name
+        user_id,
+        name
     });
     return res;
 }

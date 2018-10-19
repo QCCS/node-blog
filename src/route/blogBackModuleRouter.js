@@ -1,5 +1,4 @@
-// 博客系统的路由全部在这里
-// 定义路由
+// 博客系统api
 import Router from 'koa-router';
 import commentController from '../controller/comment';
 import imageController from '../controller/image';
@@ -12,7 +11,7 @@ import postTagController from '../controller/postTag';
 // 路由配置
 const router = new Router(
     {
-        prefix: '/blog_api'//每一个路由的前缀
+        prefix: '/blog_admin'//每一个路由的前缀
     }
 );
 

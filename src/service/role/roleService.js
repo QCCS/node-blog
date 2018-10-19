@@ -1,8 +1,8 @@
 import role from '../../models/role';
-async function createRole(id, name) {
+async function createRole(user_id, name) {
     let res = await role.create({
-        id: id,
-        name: name
+        user_id,
+        name
     });
     return res;
 }

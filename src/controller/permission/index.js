@@ -4,7 +4,7 @@ import permissionService from '../../service/permission/permissionService';
 async function createPermission(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
-    let permission = await permissionService.createPermission(user.id, data.name, data.post_id);
+    let permission = await permissionService.createPermission(user.id, data.name);
     ctx.body = permission;
     console.log(permission);
 }

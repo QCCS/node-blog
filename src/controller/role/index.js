@@ -2,7 +2,7 @@ import roleService from '../../service/role/roleService';
 async function createRole(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
-    let role = await roleService.createRole(user.id, data.name, data.post_id);
+    let role = await roleService.createRole(user.id, data.name);
     ctx.body = role;
     console.log(role);
 }

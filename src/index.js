@@ -2,20 +2,10 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import staticServer from 'koa-static';
 import bodyParser from 'koa-bodyparser';
-
-//拦截校验token，解密token
-import validateToken from './middleware/validateToken';
-import logNote from './middleware/logNote';
-import uploaderConfig from './middleware/uploaderConfig';
-import errorDel from './middleware/errorDel';
-import swaggerConfig from './middleware/swaggerConfig';
-import koaJwtConfig from './middleware/koaJwtConfig';
-import viewsConfig from './middleware/viewsConfig';
-
+import middleware from './middleware';
 import indexController from './controller/index';
 import config from './config/index';
-import router from './route/router';
-import postModuleRouter from './route/postModuleRouter';
+import router from './route';
 // 路由实例
 const routerForAllow = new Router();
 // 创建服务实例
@@ -29,27 +19,27 @@ app.use(staticServer("." + __dirname + "dist/static"));
 // 上传的图片
 app.use(staticServer("." + __dirname + "publicImg"));
 // 排除某些接口,不校验
-app.use(koaJwtConfig());
+app.use(middleware.koaJwtConfig());
 // 上传图片
-app.use(uploaderConfig());
+app.use(middleware.uploaderConfig());
 // swagger 文档
-app.use(swaggerConfig());
+app.use(middleware.swaggerConfig());
 // token错误校验必须在 koaJwt 之后
-app.use(validateToken());
+app.use(middleware.validateToken());
 // 模板引擎配置
-app.use(viewsConfig());
+app.use(middleware.viewsConfig());
 // 日志处理
-app.use(logNote());
+app.use(middleware.logNote());
 // 请求体处理
 app.use(bodyParser());
 // 统一错误处理
-app.on('error', errorDel());
+app.on('error', middleware.errorDel());
 // 使用路由中间件
 app.use(indexController)
-    .use(router.router.routes())
-    .use(postModuleRouter.router.routes())
+    .use(router.userPermissionModuleRouter.router.routes())
+    .use(router.blogBackModuleRouter.router.routes())
+    .use(router.blogFrontModuleRouter.router.routes())
     .use(routerForAllow.allowedMethods());
-
 //监听端口
 app.listen(config.port);
 console.log("监听端口：" + config.port);
