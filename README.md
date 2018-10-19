@@ -2,6 +2,8 @@
 使用Nodejs+mysql搭建的博客系统。使用koa2 ES6语法开发，webpack打包。
 数据库方面，既可以直接原生连接进行数据操作，也可以使用sequlize ORM框架对数据操作。
 
+[项目地址](https://github.com/QCCS/node-blog)
+
 [在线文档](https://qccs.github.io/node-blog/docs/#/)
 
 ## 功能介绍
