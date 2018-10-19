@@ -7,7 +7,7 @@ import config from '../config/index';
 export default function koaJwtConfig() {
     let path = [
         /^\/favicon*/,//favicon.ico,favicon-16*16.png等
-        /^\/api\/blog/,//博客前台
+        /^\/blog/,//博客前台
         /^\/api\/login/,//登陆
         /^\/img/,//静态图片
         /^\/api\/upload/,//上传文件

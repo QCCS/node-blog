@@ -4,7 +4,13 @@ import userService from '../../service/user/userService';
 async function createUser(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
-    let res = await userService.createUser(data.name, data.password,data.mobile,data.email,user.id);
+    console.log(user)
+    let res = null;
+    if(user){
+        res = await userService.createUser(data.name, data.password,data.mobile,data.email,user.id);
+    }else {
+        res = await userService.createUser(data.name, data.password,data.mobile,data.email,1);
+    }
     ctx.body = res;
     console.log(res);
 }

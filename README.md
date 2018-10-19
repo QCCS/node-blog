@@ -204,4 +204,11 @@ node install backupProd
 
 ```
 ## 项目截图
-![](./docs/imgs/1.png)
+登陆
+![](./docs/imgs/login.png)
+新增博客
+![](./docs/imgs/create_post.png)
+获取单个博客
+![](./docs/imgs/get_post.png)
+获取全部博客
+![](./docs/imgs/get_all_post.png)
