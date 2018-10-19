@@ -1,12 +1,13 @@
+//针对sequlize的配置
 const fs = require('fs');
 var data = fs.readFileSync('./settings/appSettings.js', 'utf8');
 var conf = JSON.parse(data.split("default")[1]);
 module.exports = {
     "development": {
-        "username": "root",
-        "password": "mac123",
+        "host": conf.development.host,
+        "username": conf.development.user,
+        "password": conf.development.password,
         "database": conf.development.database,
-        "host": "127.0.0.1",
         "dialect": "mysql",
         "dialectOptions": {
             "charset": "utf8mb4",
@@ -20,10 +21,10 @@ module.exports = {
         }
     },
     "test": {
-        "username": "root",
-        "password": "mac123",
-        "database": conf.development.database,
-        "host": "127.0.0.1",
+        "host": conf.test.host,
+        "username": conf.test.user,
+        "password": conf.test.password,
+        "database": conf.test.database,
         "dialect": "mysql",
         "dialectOptions": {
             "charset": "utf8mb4",
@@ -37,10 +38,10 @@ module.exports = {
         }
     },
     "production": {
-        "username": "root",
-        "password": "mac123",
+        "host": conf.production.host,
+        "username": conf.production.user,
+        "password": conf.production.password,
         "database": conf.production.database,
-        "host": "127.0.0.1",
         "dialect": "mysql",
         "dialectOptions": {
             "charset": "utf8",

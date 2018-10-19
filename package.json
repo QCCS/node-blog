@@ -7,7 +7,9 @@
     "superdev": "supervisor dist/index.js",
     "dev": "node dist/index.js",
     "webpack": "node_modules/.bin/webpack",
-    "webpackProd": "NODE_ENV=prod node_modules/.bin/webpack"
+    "webpackTest": "NODE_ENV=test node_modules/.bin/webpack",
+    "devTest": "node dist/index.js",
+    "webpackProd": "NODE_ENV=production node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",

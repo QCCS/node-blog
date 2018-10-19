@@ -1,7 +1,7 @@
 let externals = _externals();
 const copyWebpackPlugin = require('copy-webpack-plugin');
 let env = process.env.NODE_ENV || 'development';
-console.log("打包环境："+env);
+console.log("打包环境：" + env);
 module.exports = {
     entry: __dirname + '/src/index.js',//入口文件
     output: {
@@ -13,22 +13,22 @@ module.exports = {
     // devtool : "hidden-source-map",
     devtool: "nosources-source-map",
     externals: externals,
-    mode: env === "prod" ? "production" : "development",
+    mode: env === "test" ? "none" : env,
     module: {
-        rules: [
-        ]
+        rules: []
     },
     plugins: [
         new copyWebpackPlugin([{
-            from:__dirname+'/src/static',//打包的静态资源目录地址
-            to:'./static' //打包到dist下面的 static
+            from: __dirname + '/src/static',//打包的静态资源目录地址
+            to: './static' //打包到dist下面的 static
         }]),
         new copyWebpackPlugin([{
-            from:__dirname+'/src/views',//打包的模版资源目录地址
-            to:'./views' //打包到dist下面的 views
+            from: __dirname + '/src/views',//打包的模版资源目录地址
+            to: './views' //打包到dist下面的 views
         }]),
     ]
 }
+
 //外部依赖，不要打包进来
 function _externals() {
     let manifest = require('./package.json');

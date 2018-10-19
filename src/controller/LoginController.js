@@ -3,7 +3,7 @@
  */
 import userService from '../service/user/userService';
 import jwt from 'jsonwebtoken';
-import config from '../config/config.dev';
+import config from '../config';
 
 async function loginController(ctx) {
     let params = ctx.params;

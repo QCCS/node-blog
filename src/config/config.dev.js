@@ -4,13 +4,13 @@
  */
 import appSetting from '../../settings/appSettings';
 let config = {
-    port: appSetting.development.port,
+    port: appSetting.development.app_port,
     mysql: {
-        host: '127.0.0.1',
-        user: 'root',
-        password: 'mac123',
+        host: appSetting.development.host,
+        user: appSetting.development.user,
+        password: appSetting.development.password,
+        port: appSetting.development.port,
         database: appSetting.development.database,
-        port: '3306'
     },
     secret:{
         sign:"secret"

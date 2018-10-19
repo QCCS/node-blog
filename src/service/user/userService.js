@@ -1,13 +1,14 @@
 import user from '../../models/user';
 import db from '../../utils/sequelizeQuery';
 
-
-async function createUser(name, password, mobile, email) {
+async function createUser(name, password, mobile, email,created_by) {
     let res = await user.create({
         name,
         password,
         mobile,
-        email
+        email,
+        created_by,
+        status:0
     });
     return res;
 
