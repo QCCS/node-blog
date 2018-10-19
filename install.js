@@ -5,8 +5,6 @@ let args = process.argv.splice(2);
 let commandName = args[0];
 var data = fs.readFileSync('./settings/appSettings.js', 'utf8');
 var conf = JSON.parse(data.split("default")[1]);
-// 安装依赖
-var init = 'npm i --no-package-lock';
 
 // 建议先脚本创建数据库 sequelize创建数据库之后，需要修改字符集
 var mysqlCreateProd = 'mysql -uroot -pmac123 -f -e "create database IF NOT EXISTS ' + conf.production.database + ' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"';
@@ -35,78 +33,139 @@ var seedDataProd = 'NODE_ENV=production node_modules/.bin/sequelize db:seed:all'
 * 2.migrate 只能创建表结构，数据库里面已有的数据不会创建
 * */
 
-// node
-// dev 打包
-var buildDev = 'npm run webpack';
-var runDev = 'npm run dev';
-// test 打包
-var buildTest = 'npm run webpackTest';
-var runTest = 'npm run devTest';
-// prod 打包
-var buildProd = 'npm run webpackProd';
-var runProd = 'npm run superdev';
-
 
 var commandJson = {
-    help: "",
-    initAll,
-    init,
-    mysqlCreateProd,
-    mysqlCreateDev,
-    mysqlCreateTest,
-    mysqlSource,
-    sequlizeDevDB,
-    sequlizeDevTable,
-    sequlizeTestDB,
-    sequlizeTestTable,
-    sequlizeProdDB,
-    sequlizeProdTable,
-    seedDataDev,
-    seedDataTest,
-    seedDataProd,
-    buildDev,
-    runDev,
-    buildTest,
-    runTest,
-    buildProd,
-    runProd,
+    help: {
+        desc: "显示帮助",
+        com: "help"
+    },
+    initAll: {
+        desc: "打包与数据库环境准备",
+        com: initAll
+    },
+    init: {
+        desc: "安装项目依赖",
+        com: 'npm i --no-package-lock'
+    },
+    mysqlCreateProd: {
+        desc: "shell创建Prod数据库",
+        com: mysqlCreateProd
+    },
+    mysqlCreateDev: {
+        desc: "shell创建dev数据库",
+        com: mysqlCreateDev
+    },
+    mysqlCreateTest: {
+        desc: "shell创建test数据库",
+        com: mysqlCreateTest
+    },
+    mysqlSource: {
+        desc: "直接导入sql文件",
+        com: mysqlSource
+    },
+    sequlizeDevDB: {
+        desc: "sequlize创建dev数据库",
+        com: sequlizeDevDB
+    },
+    sequlizeDevTable: {
+        desc: "sequlize创建dev数据表",
+        com: sequlizeDevTable
+    },
+    sequlizeTestDB: {
+        desc: "sequlize创建test数据库",
+        com: sequlizeTestDB
+    },
+    sequlizeTestTable: {
+        desc: "sequlize创建test数据表",
+        com: sequlizeTestTable
+    },
+    sequlizeProdDB: {
+        desc: "sequlize创建Prod数据库",
+        com: sequlizeProdDB
+    },
+    sequlizeProdTable: {
+        desc: "sequlize创建Prod数据表",
+        com: sequlizeProdTable
+    },
+    seedDataDev: {
+        desc: "dev填充数据",
+        com: seedDataDev
+    },
+    seedDataTest: {
+        desc: "test填充数据",
+        com: seedDataTest
+    },
+    seedDataProd: {
+        desc: "prod填充数据",
+        com: seedDataProd
+    },
+    buildDev: {
+        desc: "打包开发环境",
+        com: 'npm run webpack'
+    },
+    runDev: {
+        desc: "打包开发环境",
+        com: 'npm run dev'
+    },
+    buildTest: {
+        desc: "打包Test环境",
+        com: 'npm run webpackTest'
+    },
+    runTest: {
+        desc: "运行Test环境",
+        com: 'npm run devTest'
+    },
+    buildProd: {
+        desc: "打包Prod环境",
+        com: 'npm run webpackProd'
+    },
+    runProd: {
+        desc: "运行Prod环境",
+        com: 'npm run superdev'
+    },
+    backup: {
+        desc: "备份dev数据库",
+        com: 'node backup-db.js'
+    },
+    backupTest: {
+        desc: "备份test数据库",
+        com: 'NODE_ENV=test node backup-db.js'
+    },
+    backupProd: {
+        desc: "备份prod数据库",
+        com: 'NODE_ENV=production node backup-db.js'
+    },
 }
-var commandJsonExplain = {
-    help: "显示帮助",
-    initAll: "打包与数据库环境准备",
-    init: "安装依赖",
-    mysqlCreateProd: "shell创建Prod数据库",
-    mysqlCreateTest: "shell创建dev数据库",
-    mysqlCreateDev: "shell创建dev数据库",
-    mysqlSource: "直接导入sql文件",
-    sequlizeDevDB: "sequlize创建dev数据库",
-    sequlizeDevTable: "sequlize创建dev数据表",
-    sequlizeTestDB: "sequlize创建test数据库",
-    sequlizeTestTable: "sequlize创建test数据表",
-    sequlizeProdDB: "sequlize创建Prod数据库",
-    sequlizeProdTable: "sequlize创建Prod数据表",
-    seedDataDev: "dev填充数据",
-    seedDataTest: "test填充数据",
-    seedDataProd: "prod填充数据",
-    buildDev: "打包开发环境",
-    runDev: "打包开发环境",
-    buildTest: "打包Test环境",
-    runTest: "运行Test环境",
-    buildProd: "打包Prod环境",
-    runProd: "运行Prod环境",
-}
+
 function showTips() {
     console.log("找不到定义的命令，请从下面命令选择");
+    console.log("------- node-blog-cli start -------");
+    var i=0;
     for (let key in commandJson) {
-        console.log(commandJsonExplain[key] + "，请运行：node install " + key);
+        i++;
+        if(i%2===0){
+            //cyan
+            console.log('\x1B[36m%s\x1B[0m:', commandJson[key].desc);
+            console.log('\x1B[36m%s\x1B[0m', "node install " + key);
+        }else {
+            //yellow
+            console.log('\x1B[33m%s\x1b[0m:', commandJson[key].desc);
+            console.log('\x1B[33m%s\x1b[0m', "node install " + key);
+        }
+
     }
+    console.log("------- node-blog-cli end -------");
 }
+
 function runCommand(command) {
     var sh = commandJson[command];
     if (sh) {
-        console.log("运行：" + commandJson[command]);
-        //return refrence to the child process
-        return exec(sh, function (err, stdout, stderr) {
+        let com = commandJson[command].com;
+        console.log(commandJson[command].desc);
+        console.log("\n");
+        console.log(commandJson[command].com);
+        //执行命令
+        exec(com, function (err, stdout, stderr) {
             if (err) {
                 console.log("err " + err);
                 console.log("stderr " + stderr);

@@ -14,3 +14,8 @@ git clone -b master https://github.com/QCCS/tech-share-s.git
 node install initAll
 pm2 start dist/index.js -i 0 --name "app-name"
 ```
+
+部署dev
+
+
+部署test
