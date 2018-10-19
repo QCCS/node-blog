@@ -217,3 +217,5 @@ node install backupProd
 获取全部博客(可浏览器直接查看)
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/get_all_post.png)
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/post_list.png)
+获取用户列表
+![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/user.png)
