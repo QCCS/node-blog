@@ -40,7 +40,7 @@ var commandJson = {
         com: "help"
     },
     initAll: {
-        desc: "打包与数据库环境准备",
+        desc: "生成环境：打包与数据库环境准备",
         com: initAll
     },
     init: {
