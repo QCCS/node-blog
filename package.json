@@ -1,7 +1,7 @@
 {
-  "name": "tech-share-s",
+  "name": "node-blog",
   "version": "1.0.0",
-  "description": "在github上创建一个仓库，clone到本地 创建readme.md",
+  "description": "node搭建博客",
   "main": "src/index.js",
   "scripts": {
     "superdev": "supervisor dist/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QCCS/tech-share-s.git"
+    "url": "git+https://github.com/QCCS/node-blog.git"
   },
   "keywords": [
     "node",
@@ -29,9 +29,9 @@
   "author": "qccs",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/QCCS/tech-share-s/issues"
+    "url": "https://github.com/QCCS/node-blog/issues"
   },
-  "homepage": "https://github.com/QCCS/tech-share-s#readme",
+  "homepage": "https://github.com/QCCS/node-blog#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",

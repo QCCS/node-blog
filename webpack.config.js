@@ -26,6 +26,10 @@ module.exports = {
             from: __dirname + '/src/views',//打包的模版资源目录地址
             to: './views' //打包到dist下面的 views
         }]),
+        new copyWebpackPlugin([{
+            from: __dirname + '/README.md',
+            to: __dirname + '/docs/README.md',
+        }]),
     ]
 }
 

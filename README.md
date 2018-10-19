@@ -1,4 +1,4 @@
-# node-blog
+# 项目介绍文档
 
 ## 环境准备
 ```
@@ -47,7 +47,7 @@ export default {
 node install initAll
 pm2 start dist/index.js -i 0 --name "app-name"
 ```
-## dev
+## 开发项目
 ```
 //环境准备
 node install init
@@ -63,7 +63,7 @@ node install runDev
 node watchChange.js
 npm run superdev
 ```
-## 部署 test
+## 部署测试环境
 ```
 //环境准备
 node install init
