@@ -162,17 +162,21 @@ function runCommand(command) {
     var sh = commandJson[command];
     if (sh) {
         let com = commandJson[command].com;
-        console.log(commandJson[command].desc);
-        console.log("\n");
-        console.log(commandJson[command].com);
-        //执行命令
-        exec(com, function (err, stdout, stderr) {
-            if (err) {
-                console.log("err " + err);
-                console.log("stderr " + stderr);
-            }
-            console.log(stdout);
-        });
+        if(com.constructor.name==="Function"){
+            commandJson[command].com()
+        }else {
+            console.log(commandJson[command].desc);
+            console.log("\n");
+            console.log(commandJson[command].com);
+            //执行命令
+            exec(com, function (err, stdout, stderr) {
+                if (err) {
+                    console.log("err " + err);
+                    console.log("stderr " + stderr);
+                }
+                console.log(stdout);
+            });
+        }
     } else {
         showTips();
     }
@@ -180,6 +184,7 @@ function runCommand(command) {
 
 // 一键初始化项目准备数据库环境
 function initAll(callback) {
+    console.log("一键初始化项目准备数据库环境");
     exec("node install init", function (err, stdout, stderr) {
         console.log(stdout);
         exec("node install buildProd", function (err, stdout, stderr) {
