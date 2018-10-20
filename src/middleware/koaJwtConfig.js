@@ -11,7 +11,8 @@ export default function koaJwtConfig() {
         /^\/api\/login/,//登陆
         /^\/img/,//静态图片
         /^\/api\/upload/,//上传文件
-        /^\/doc/,//文档忽略
+        /^\/doc*/,//文档忽略
+        /^\/swagger-docs*/,//文档忽略
         /^\/swagger/,//文档忽略
         /^\/api\/register///注册
     ]

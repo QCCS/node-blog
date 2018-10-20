@@ -35,8 +35,6 @@ app.use(bodyParser());
 // 统一错误处理
 app.on('error', middleware.errorDel());
 // 使用路由中间件
-console.log(controller)
-console.log(controller.initController)
 app.use(controller.initController.initController)
     .use(router.userPermissionModuleRouter.router.routes())
     .use(router.blogBackModuleRouter.router.routes())

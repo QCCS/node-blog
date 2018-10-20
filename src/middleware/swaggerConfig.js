@@ -6,7 +6,7 @@ export default function swaggerConfig() {
     let options = {
         routePrefix: '/swagger', // host at /swagger instead of default /docs
         swaggerOptions: {
-            url: '/doc.json', // example path to json
+            url: '/swagger-docs/doc.json', // example path to json
             //json可以考虑模块导入，复用
         },
     }
