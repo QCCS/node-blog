@@ -1,5 +1,6 @@
 /**
  * Created by zhouli on 18/10/19
+ * 控制器扫描器，通过扫描控制器 controller 目录下，自动生成控制器入口文件
  */
 var fs = require("fs");
 var controllerArr = [];

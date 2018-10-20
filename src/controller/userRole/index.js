@@ -23,7 +23,6 @@ async function deleteUserRole(ctx) {
     let user = ctx.user;
     let b = await userRoleService.deleteUserRole(user.id, ctx.params.id);
     ctx.body = b;
-    console.log(b);
 }
 async function updateUserRole(ctx) {
     let data = ctx.request.body;
