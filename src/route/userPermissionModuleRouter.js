@@ -1,6 +1,5 @@
 //用户权限设计
 import Router from 'koa-router';
-import loginController from '../controller/LoginController';
 import userController from '../controller/user';
 import permissionController from '../controller/permission';
 import roleController from '../controller/role';
@@ -16,7 +15,7 @@ const router = new Router(
 
 router
     //测试用get
-    .get('/login', loginController)
+    .get('/login', userController.loginController)
     .post('/register', userController.createUser)
     .post('/user', userController.createUser)
     .get('/user', userController.getAllUser)

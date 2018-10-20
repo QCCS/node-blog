@@ -21,7 +21,6 @@ async function deleteComment(ctx) {
     ctx.body = b;
     console.log(b);
 }
-
 async function updateComment(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

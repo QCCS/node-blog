@@ -25,7 +25,6 @@ async function deleteUserRole(ctx) {
     ctx.body = b;
     console.log(b);
 }
-
 async function updateUserRole(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

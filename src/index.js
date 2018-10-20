@@ -3,7 +3,7 @@ import Router from 'koa-router';
 import staticServer from 'koa-static';
 import bodyParser from 'koa-bodyparser';
 import middleware from './middleware';
-import indexController from './controller/index';
+import controller from './controller';
 import config from './config/index';
 import router from './route';
 // 路由实例
@@ -35,7 +35,7 @@ app.use(bodyParser());
 // 统一错误处理
 app.on('error', middleware.errorDel());
 // 使用路由中间件
-app.use(indexController)
+app.use(controller.indexController.initController)
     .use(router.userPermissionModuleRouter.router.routes())
     .use(router.blogBackModuleRouter.router.routes())
     .use(router.blogFrontModuleRouter.router.routes())
