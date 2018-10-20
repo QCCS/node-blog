@@ -1,39 +1,35 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "文档案例，参照下面写，可以考虑用脚本写成扫描器，生成json",
+    "description": "博客系统API文档",
     "version": "1.0.0",
-    "title": "tech-share-s doc",
-    "termsOfService": "http://swagger.io/terms/",
-    "contact": {
-      "email": "apiteam@swagger.io"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses，/LICENSE-2.0.html"
-    }
+    "title": "博客系统API文档"
   },
-  "host": "localhost:8113",
+  "host": "localhost",
   "basePath": "/api",
   "tags": [
     {
-      "name": "fee",
-      "description": "对费用的curd",
+      "name": "user",
+      "description": "对用户的CURD",
       "externalDocs": {
-        "description": "Find out more",
-        "url": "http://localhost:8113"
+        "description": "更多",
+        "url": "/user/doc.json"
       }
     },
     {
-      "name": "store",
-      "description": "Access to Petstore orders"
+      "name": "accessToken",
+      "description": "Operations about accessToken",
+      "externalDocs": {
+        "description": "更多",
+        "url": "/accessToken/doc.json"
+      }
     },
     {
-      "name": "user",
-      "description": "Operations about user",
+      "name": "refreshToken",
+      "description": "Operations about refreshToken",
       "externalDocs": {
-        "description": "Find out more about our store",
-        "url": "http://swagger.io"
+        "description": "更多",
+        "url": "/refreshToken/doc.json"
       }
     }
   ],
@@ -41,191 +37,487 @@
     "https",
     "http"
   ],
+  "definitions": {
+    "user": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "password",
+        "mobile"
+      ],
+      "properties": {
+        "id": {
+          "primaryKey": true,
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "created_by": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "user"
+      }
+    },
+    "role": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "primaryKey": true,
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "role"
+      }
+    },
+    "permission": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "primaryKey": true,
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "permission"
+      }
+    },
+    "userRole": {
+      "type": "object",
+      "required": [
+        "id",
+        "user_id",
+        "role_id",
+        "created_by"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "primaryKey": true,
+          "format": "int32"
+        },
+        "created_by": {
+          "type": "integer"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "role_id": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "userRole"
+      }
+    },
+    "rolePermission": {
+      "type": "object",
+      "required": [
+        "id",
+        "permission_id",
+        "role_id",
+        "created_by"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "primaryKey": true
+        },
+        "created_by": {
+          "type": "integer"
+        },
+        "permission_id": {
+          "type": "integer"
+        },
+        "role_id": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "rolePermission"
+      }
+    },
+
+    "accessToken": {
+      "type": "object",
+      "required": [
+        "id",
+        "access_token",
+        "user_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "primaryKey": true
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "access_token": {
+          "type": "string"
+        },
+        "client_id": {
+          "type": "string"
+        },
+        "expires": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "accessToken"
+      }
+    },
+    "refreshToken": {
+      "type": "object",
+      "required": [
+        "id",
+        "refresh_token",
+        "user_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "primaryKey": true
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "refresh_token": {
+          "type": "string"
+        },
+        "client_id": {
+          "type": "string"
+        },
+        "expires": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "refreshToken"
+      }
+    },
+
+    "comment": {
+      "type": "object",
+      "required": [
+        "id",
+        "comment",
+        "user_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "comment"
+      }
+    },
+    "post": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "content",
+        "desc",
+        "user_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "is_delete": {
+          "type": "integer"
+        },
+        "is_draft": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "post"
+      }
+    },
+    "tag": {
+      "type": "object",
+      "required": [
+        "id",
+        "tag",
+        "user_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "tag"
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": [
+        "id",
+        "path"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "path": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "type": "BIGINT"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "image"
+      }
+    },
+    "postLike": {
+      "type": "object",
+      "required": [
+        "id",
+        "post_id",
+        "integer"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "post_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "postLike"
+      }
+    },
+    "postTag": {
+      "type": "object",
+      "required": [
+        "id",
+        "tag_id",
+        "integer"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+
+        "tag_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "postTag"
+      }
+    },
+    "postComment": {
+      "type": "object",
+      "required": [
+        "id",
+        "user_id",
+        "comment_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "comment_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "postComment"
+      }
+    },
+    "postRead": {
+      "type": "object",
+      "required": [
+        "id",
+        "user_id",
+        "post_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "primaryKey": true
+        },
+        "post_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        }
+      },
+      "xml": {
+        "name": "postRead"
+      }
+    }
+  },
   "paths": {
-    "/fee": {
-      "post": {
-        "tags": [
-          "fee"
-        ],
-        "summary": "新增费用",
-        "description": "",
-        "operationId": "addPet",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Fee object that needs to be added to the store",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Fee"
-            }
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "fee"
-        ],
-        "summary": "Update an existing pet",
-        "description": "",
-        "operationId": "updatePet",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Fee object that needs to be added to the store",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Fee"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Pet not found"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ]
-      }
-    },
-    "/store": {
-      "post": {
-        "tags": [
-          "pet"
-        ],
-        "summary": "Add a new pet to the store",
-        "description": "",
-        "operationId": "addPet",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Pet object that needs to be added to the store",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Pet"
-            }
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "pet"
-        ],
-        "summary": "Update an existing pet",
-        "description": "",
-        "operationId": "updatePet",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Pet object that needs to be added to the store",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Pet"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Pet not found"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ]
-      }
-    },
     "/user": {
       "post": {
         "tags": [
-          "pet"
+          "user"
         ],
-        "summary": "Add a new pet to the store",
-        "description": "",
-        "operationId": "addPet",
+        "summary": "新增用户",
+        "description": "超级管理员新增用户",
+        "operationId": "addUser",
         "consumes": [
           "application/json",
           "application/xml"
@@ -238,10 +530,10 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Pet object that needs to be added to the store",
+            "description": "user object that needs to be added to the store",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Pet"
+              "$ref": "#/definitions/user"
             }
           }
         ],
@@ -253,15 +545,15 @@
         "security": [
           {
             "petstore_auth": [
-              "write:pets",
-              "read:pets"
+              "write:user",
+              "read:user"
             ]
           }
         ]
       },
       "put": {
         "tags": [
-          "pet"
+          "user"
         ],
         "summary": "Update an existing pet",
         "description": "",
@@ -278,10 +570,184 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Pet object that needs to be added to the store",
+            "description": "user object that needs to be added to the store",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Pet"
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "user not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/role": {
+      "post": {
+        "tags": [
+          "role"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/role"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "role"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/role"
             }
           }
         ],
@@ -299,8 +765,2359 @@
         "security": [
           {
             "petstore_auth": [
-              "write:pets",
-              "read:pets"
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "role"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/role"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "role"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/role"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/permission": {
+      "post": {
+        "tags": [
+          "permission"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/permission"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "permission"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/permission"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "permission"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/permission"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "permission"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/permission"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/userRole": {
+      "post": {
+        "tags": [
+          "userRole"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userRole"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "userRole"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userRole"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "userRole"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "userRole object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userRole"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "userRole"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userRole"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/rolePermission": {
+      "post": {
+        "tags": [
+          "rolePermission"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rolePermission"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "rolePermission"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "rolePermission"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "rolePermission"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rolePermission"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+
+    "/post": {
+      "post": {
+        "tags": [
+          "post"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "post"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/tag": {
+      "post": {
+        "tags": [
+          "tag"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tag"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "tag"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "tag"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "tag"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/comment": {
+      "post": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "comment"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/image": {
+      "post": {
+        "tags": [
+          "image"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "image"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "image"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+
+    "/postComment": {
+      "post": {
+        "tags": [
+          "postComment"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "postComment"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "postComment"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "postComment"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/postTag": {
+      "post": {
+        "tags": [
+          "postTag"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "postTag"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "postTag"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "postTag"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/postLike": {
+      "post": {
+        "tags": [
+          "postLike"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "postLike"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "postLike"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "postLike"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/postRead": {
+      "post": {
+        "tags": [
+          "postRead"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "postRead"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "postRead"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "postRead"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+
+    "/accessToken": {
+      "post": {
+        "tags": [
+          "accessToken"
+        ],
+        "summary": "新增token",
+        "description": "根据用户新增token",
+        "operationId": "addAccessToken",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "accessToken object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accessToken"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "accessToken"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "accessToken"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "deletePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "accessToken"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      }
+    },
+    "/refreshToken": {
+      "post": {
+        "tags": [
+          "refreshToken"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "refreshToken"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "refreshToken"
+        ],
+        "summary": "新增",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "refreshToken"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/post"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:users",
+              "read:users"
             ]
           }
         ]
@@ -313,210 +3130,14 @@
       "authorizationUrl": "https://localhost:8113/oauth/dialog",
       "flow": "implicit",
       "scopes": {
-        "write:pets": "modify pets in your account",
-        "read:pets": "read your pets"
+        "write:users": "modify pets in your account",
+        "read:users": "read your pets"
       }
     },
     "api_key": {
       "type": "apiKey",
       "name": "api_key",
       "in": "header"
-    }
-  },
-  "definitions": {
-    "Order": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "petId": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "quantity": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "shipDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "status": {
-          "type": "string",
-          "description": "Order Status",
-          "enum": [
-            "placed",
-            "approved",
-            "delivered"
-          ]
-        },
-        "complete": {
-          "type": "boolean",
-          "default": false
-        }
-      },
-      "xml": {
-        "name": "Order"
-      }
-    },
-    "User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "username": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "userStatus": {
-          "type": "integer",
-          "format": "int32",
-          "description": "User Status"
-        }
-      },
-      "xml": {
-        "name": "User"
-      }
-    },
-    "Category": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Category"
-      }
-    },
-    "Fee": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "userId": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "total": {
-          "type": "string"
-        },
-        "desc": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Tag"
-      }
-    },
-    "Tag": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Tag"
-      }
-    },
-    "Pet": {
-      "type": "object",
-      "required": [
-        "name",
-        "photoUrls"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "category": {
-          "$ref": "#/definitions/Category"
-        },
-        "name": {
-          "type": "string",
-          "example": "doggie"
-        },
-        "photoUrls": {
-          "type": "array",
-          "xml": {
-            "name": "photoUrl",
-            "wrapped": true
-          },
-          "items": {
-            "type": "string"
-          }
-        },
-        "tags": {
-          "type": "array",
-          "xml": {
-            "name": "tag",
-            "wrapped": true
-          },
-          "items": {
-            "$ref": "#/definitions/Tag"
-          }
-        },
-        "status": {
-          "type": "string",
-          "description": "pet status in the store",
-          "enum": [
-            "available",
-            "pending",
-            "sold"
-          ]
-        }
-      },
-      "xml": {
-        "name": "Pet"
-      }
-    },
-    "ApiResponse": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "type": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
     }
   },
   "externalDocs": {

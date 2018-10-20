@@ -2,7 +2,7 @@
 import accessTokenController from './accessToken';
 import commentController from './comment';
 import imageController from './image';
-import indexController from './index';
+import initController from './init';
 import permissionController from './permission';
 import postController from './post';
 import postCommentController from './postComment';
@@ -20,7 +20,7 @@ export default {
     accessTokenController,
     commentController,
     imageController,
-    indexController,
+    initController,
     permissionController,
     postController,
     postCommentController,
