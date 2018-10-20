@@ -71,7 +71,7 @@
 
 `|-`install.js 命令行工具
 
-`|-`watchChange.js 开发时工具
+`|-`watchChange.js 开发时工具，扫描器
 
 `|-`webpack.config.js 打包配置
 
@@ -139,6 +139,7 @@ node install runDev
 node watchChange.js
 npm run superdev
 ```
+开发时建议运行 watchChange.js 让扫描器自动扫描
 ## 部署测试环境
 ```
 //环境准备

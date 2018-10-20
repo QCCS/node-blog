@@ -1,39 +1,7 @@
 // 安装步骤
 const fs = require('fs');
-var exec = require('child_process').exec;
-let args = process.argv.splice(2);
-let commandName = args[0];
-var data = fs.readFileSync('./settings/appSettings.js', 'utf8');
-var conf = JSON.parse(data.split("default")[1]);
-
-// 建议先脚本创建数据库 sequelize创建数据库之后，需要修改字符集
-var mysqlCreateProd = 'mysql -uroot -pmac123 -f -e "create database IF NOT EXISTS ' + conf.production.database + ' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"';
-var mysqlCreateDev = 'mysql -uroot -pmac123 -f -e "create database IF NOT EXISTS ' + conf.development.database + ' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"';
-var mysqlCreateTest = 'mysql -uroot -pmac123 -f -e "create database IF NOT EXISTS ' + conf.test.database + ' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"';
-// mysql
-// 直接导入sql逻辑备份文件
-var mysqlSource = 'mysql -uroot -pmac123 -f -e "source src/database_name.sql"';
-
-// dev 通过迁移文件 migrate
-var sequlizeDevDB = 'node_modules/.bin/sequelize db:create';
-var sequlizeDevTable = 'node_modules/.bin/sequelize db:migrate';
-// test 通过迁移文件 migrate
-var sequlizeTestDB = 'NODE_ENV=test node_modules/.bin/sequelize db:create';
-var sequlizeTestTable = 'NODE_ENV=test node_modules/.bin/sequelize db:migrate';
-// prod 通过迁移文件 migrate
-var sequlizeProdDB = 'NODE_ENV=production node_modules/.bin/sequelize db:create';
-var sequlizeProdTable = 'NODE_ENV=production node_modules/.bin/sequelize db:migrate';
-// 填充数据
-var seedDataDev = 'node_modules/.bin/sequelize db:seed:all';
-var seedDataTest = 'NODE_ENV=test node_modules/.bin/sequelize db:seed:all';
-var seedDataProd = 'NODE_ENV=production node_modules/.bin/sequelize db:seed:all';
-/*
-* 注意
-* 1.只有对应的表创建了 migrate，运行命令才能创建表
-* 2.migrate 只能创建表结构，数据库里面已有的数据不会创建
-* */
-
-
+const exec = require('child_process').exec;
+var conf = getAppConfig("./settings/", "appSettings.js");
 var commandJson = {
     help: {
         desc: "显示帮助",
@@ -49,55 +17,55 @@ var commandJson = {
     },
     mysqlCreateProd: {
         desc: "推荐使用：shell创建Prod数据库",
-        com: mysqlCreateProd
+        com: getMysqlCreateShell(conf.production)
     },
     mysqlCreateDev: {
         desc: "推荐使用：shell创建dev数据库",
-        com: mysqlCreateDev
+        com: getMysqlCreateShell(conf.development)
     },
     mysqlCreateTest: {
         desc: "推荐使用：shell创建test数据库",
-        com: mysqlCreateTest
+        com: getMysqlCreateShell(conf.test)
     },
     mysqlSource: {
-        desc: "直接导入sql文件",
-        com: mysqlSource
+        desc: "直接导入生产环境sql文件，sql文件放在项目跟目录",
+        com: getMysqlImportShell(conf.production)
     },
     sequlizeDevDB: {
         desc: "不推荐使用：sequlize创建dev数据库",
-        com: sequlizeDevDB
+        com: 'node_modules/.bin/sequelize db:create'
     },
     sequlizeDevTable: {
         desc: "sequlize创建dev数据表",
-        com: sequlizeDevTable
+        com: 'node_modules/.bin/sequelize db:migrate'
     },
     sequlizeTestDB: {
         desc: "不推荐使用：sequlize创建test数据库",
-        com: sequlizeTestDB
+        com: 'NODE_ENV=test node_modules/.bin/sequelize db:create'
     },
     sequlizeTestTable: {
         desc: "sequlize创建test数据表",
-        com: sequlizeTestTable
+        com: 'NODE_ENV=test node_modules/.bin/sequelize db:migrate'
     },
     sequlizeProdDB: {
         desc: "不推荐使用：sequlize创建Prod数据库",
-        com: sequlizeProdDB
+        com: 'NODE_ENV=production node_modules/.bin/sequelize db:create'
     },
     sequlizeProdTable: {
         desc: "sequlize创建Prod数据表",
-        com: sequlizeProdTable
+        com: 'NODE_ENV=production node_modules/.bin/sequelize db:migrate'
     },
     seedDataDev: {
         desc: "dev填充数据",
-        com: seedDataDev
+        com: 'node_modules/.bin/sequelize db:seed:all'
     },
     seedDataTest: {
         desc: "test填充数据",
-        com: seedDataTest
+        com: 'NODE_ENV=test node_modules/.bin/sequelize db:seed:all'
     },
     seedDataProd: {
         desc: "prod填充数据",
-        com: seedDataProd
+        com: 'NODE_ENV=production node_modules/.bin/sequelize db:seed:all'
     },
     buildDev: {
         desc: "打包开发环境",
@@ -136,18 +104,50 @@ var commandJson = {
         com: 'NODE_ENV=production node backup-db.js'
     },
 }
+/*
+* 注意
+* 1.只有对应的表创建了 migrate，运行命令才能创建表
+* 2.migrate 只能创建表结构，数据库里面已有的数据不会创建
+* */
 
+//获取输入命令
+function getInputCommandName() {
+    let args = process.argv.splice(2);
+    let commandName = args[0];
+    return commandName;
+}
+
+//获取项目配置
+function getAppConfig(path, fileName) {
+    var data = fs.readFileSync(path + fileName, 'utf8');
+    var conf = JSON.parse(data.split("default")[1]);
+    return conf;
+}
+
+//生成 mysql 数据库创建 shell
+function getMysqlCreateShell(conf) {
+    var mysqlCreate = 'create database IF NOT EXISTS ';
+    var mysqlChar = ' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci';
+    return 'mysql -u' + conf.user + ' -p' + conf.password + ' -f -e "' + mysqlCreate + conf.database + mysqlChar + '"';
+}
+
+//生成导入数据库的shell
+function getMysqlImportShell(conf) {
+    return 'mysql -u' + conf.user + ' -p' + conf.password + ' -f -e "source ' + conf.database + '.sql"';
+}
+
+//命令提示
 function showTips() {
     console.log("找不到定义的命令，请从下面命令选择");
     console.log("------- node-blog-cli start -------");
-    var i=0;
+    var i = 0;
     for (let key in commandJson) {
         i++;
-        if(i%2===0){
+        if (i % 2 === 0) {
             //cyan
             console.log('\x1B[36m%s\x1B[0m:', commandJson[key].desc);
             console.log('\x1B[36m%s\x1B[0m', "node install " + key);
-        }else {
+        } else {
             //yellow
             console.log('\x1B[33m%s\x1b[0m:', commandJson[key].desc);
             console.log('\x1B[33m%s\x1b[0m', "node install " + key);
@@ -157,6 +157,7 @@ function showTips() {
     console.log("------- node-blog-cli end -------");
 }
 
+//运行命令
 function runCommand(command) {
     var sh = commandJson[command];
     if (sh) {
@@ -197,14 +198,21 @@ function initAll(callback) {
     });
 }
 
-//运行命令
-if (commandName === "initAll") {
-    initAll();
+//通过传入的参数运行运行指定命令
+function initByArgs(commandName) {
+    //运行命令
+    if (commandName === "initAll") {
+        initAll();
+    }
+    else if (commandName === "help") {
+        console.log("请查看readme,或者docs目录下的文档");
+        showTips();
+    }
+    else {
+        runCommand(commandName);
+    }
 }
-else if (commandName === "help") {
-    console.log("请查看readme,或者docs目录下的文档");
-    showTips();
-}
-else {
-    runCommand(commandName);
-}
+
+var commandName = getInputCommandName();
+
+initByArgs(commandName);
