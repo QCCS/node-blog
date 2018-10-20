@@ -13,7 +13,7 @@
       "description": "对用户的CURD",
       "externalDocs": {
         "description": "更多",
-        "url": "/user/doc.json"
+        "url": "/swagger-docs/doc-user.json"
       }
     },
     {
@@ -21,7 +21,7 @@
       "description": "Operations about accessToken",
       "externalDocs": {
         "description": "更多",
-        "url": "/accessToken/doc.json"
+        "url": "/swagger-docs/doc-user.json"
       }
     },
     {
@@ -29,7 +29,7 @@
       "description": "Operations about refreshToken",
       "externalDocs": {
         "description": "更多",
-        "url": "/refreshToken/doc.json"
+        "url": "/swagger-docs/doc.json"
       }
     }
   ],
