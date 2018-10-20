@@ -48,15 +48,15 @@ var commandJson = {
         com: 'npm i --no-package-lock'
     },
     mysqlCreateProd: {
-        desc: "shell创建Prod数据库",
+        desc: "推荐使用：shell创建Prod数据库",
         com: mysqlCreateProd
     },
     mysqlCreateDev: {
-        desc: "shell创建dev数据库",
+        desc: "推荐使用：shell创建dev数据库",
         com: mysqlCreateDev
     },
     mysqlCreateTest: {
-        desc: "shell创建test数据库",
+        desc: "推荐使用：shell创建test数据库",
         com: mysqlCreateTest
     },
     mysqlSource: {
@@ -64,7 +64,7 @@ var commandJson = {
         com: mysqlSource
     },
     sequlizeDevDB: {
-        desc: "sequlize创建dev数据库",
+        desc: "不推荐使用：sequlize创建dev数据库",
         com: sequlizeDevDB
     },
     sequlizeDevTable: {
@@ -72,7 +72,7 @@ var commandJson = {
         com: sequlizeDevTable
     },
     sequlizeTestDB: {
-        desc: "sequlize创建test数据库",
+        desc: "不推荐使用：sequlize创建test数据库",
         com: sequlizeTestDB
     },
     sequlizeTestTable: {
@@ -80,7 +80,7 @@ var commandJson = {
         com: sequlizeTestTable
     },
     sequlizeProdDB: {
-        desc: "sequlize创建Prod数据库",
+        desc: "不推荐使用：sequlize创建Prod数据库",
         com: sequlizeProdDB
     },
     sequlizeProdTable: {
@@ -104,7 +104,7 @@ var commandJson = {
         com: 'npm run webpack'
     },
     runDev: {
-        desc: "打包开发环境",
+        desc: "运行开发环境",
         com: 'npm run dev'
     },
     buildTest: {

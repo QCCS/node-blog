@@ -9,6 +9,8 @@ module.exports = {
                 mobile: '15921552946',
                 email: '15921552946@qq.com',
                 status:0,
+                created_at:new Date(),
+                updated_at:new Date()
             },
             {
                 name: 'admin2',
@@ -16,6 +18,8 @@ module.exports = {
                 mobile: '15921552947',
                 email: '15921552947@qq.com',
                 status:0,
+                created_at:new Date(),
+                updated_at:new Date()
             }
         ], {});
     },
