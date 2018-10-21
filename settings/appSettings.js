@@ -1,4 +1,5 @@
 //此文件不要修改其他，除了添加key与value
+//一定保证key与value为字符串
 export default {
     "development": {
         "app_port": 9313,
@@ -24,5 +25,5 @@ export default {
         "port": "3306",
         "database": "node_blog_prod"
     },
-    logsPath:'logs/'
+    "logsPath":"logs/"
 }

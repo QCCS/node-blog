@@ -11,6 +11,18 @@ var commandJson = {
         desc: "生成环境：打包与数据库环境准备",
         com: initAll
     },
+    test:{
+        desc: "测试",
+        com: 'npm run test'
+    },
+    nyc:{
+        desc: "测试，显示报表",
+        com: 'npm run nyc'
+    },
+    testReport:{
+        desc: "生成html测试报表",
+        com: 'npm run testReport'
+    },
     init: {
         desc: "安装项目依赖",
         com: 'npm i --no-package-lock'
