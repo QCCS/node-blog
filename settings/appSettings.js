@@ -23,5 +23,6 @@ export default {
         "password": "mac123",
         "port": "3306",
         "database": "node_blog_prod"
-    }
+    },
+    logsPath:'logs/'
 }
