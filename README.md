@@ -1,3 +1,4 @@
+> node-blog 可能是最好的Node博客系统。
 # 项目介绍文档
 使用Nodejs+mysql搭建的博客系统。使用koa2 ES6语法开发，webpack打包。
 数据库方面，既可以直接原生连接进行数据操作，也可以使用sequlize ORM框架对数据操作。
@@ -8,76 +9,51 @@
 
 ## 功能介绍
 + 注册与Jwt登陆认证
-+ 用户以及权限管理
-+ 博客发布管理
-+ [+] 文件上传
-+ 博客标签管理
-+ 博客评论管理
-+ ~~博客点赞~~
-+ 博客阅读量
-+ 博客前台 ejs 模板引擎
-+ 集成 swagger 文档
-+ [+] 日志记录
-+ 项目数据备份
-+ [] 开发扫描工具
-+ 安装部署命令行工具
-+ [] 集成测试
-
++ [ ] 用户以及权限管理
++ [ ] 博客发布管理
++ [x] 文件上传
++ [ ] 博客标签管理
++ [ ] 博客评论管理
++ [x] ~~博客点赞~~
++ [ ] 博客阅读量
++ [ ] 博客前台 ejs 模板引擎
++ [x] 集成 swagger 文档
++ [x] 日志记录
++ [x] 项目数据备份
++ [ ] 开发扫描工具
++ [x] 安装部署命令行工具
++ [ ] 集成测试
 ## 开发相关
 + 控制器自动扫描
 + 开发自动化
 
 ## 项目目录
 
-`|-`dist 打包之后的目录
-
-`|-`docs 文档目录
-
-`|-`logs 运行日志目录
-
-`|-`publicImg 上传的图片目录
-
-`|-`settings 应用设置目录
-
-`|-`src 核心源码目录
-
-&nbsp;&nbsp;&nbsp;`|-`backup-db 数据库备份目录
-
-&nbsp;&nbsp;&nbsp;`|-`config 项目配置目录
-
-&nbsp;&nbsp;&nbsp;`|-`controller 控制器目录
-
-&nbsp;&nbsp;&nbsp;`|-`dao 数据获取与ORM框架model对应
-
-&nbsp;&nbsp;&nbsp;`|-`middleware 中间件目录
-
-&nbsp;&nbsp;&nbsp;`|-`migrations 迁移文件目录
-
-&nbsp;&nbsp;&nbsp;`|-`models 数据模型目录
-
-&nbsp;&nbsp;&nbsp;`|-`route 路由目录
-
-&nbsp;&nbsp;&nbsp;`|-`seeders 数据种子文件目录
-
-&nbsp;&nbsp;&nbsp;`|-`service 链接控制器与模型
-
-&nbsp;&nbsp;&nbsp;`|-`static 静态文件目录
-
-&nbsp;&nbsp;&nbsp;`|-`utils 工具函数目录
-
-&nbsp;&nbsp;&nbsp;`|-`views 前端模板引擎目录
-
-&nbsp;&nbsp;&nbsp;`|-`index.js 入口文件
-
-`|-`backup-db.js 备份
-
-`|-`install.js 命令行工具
-
-`|-`watchChange.js 开发时工具，扫描器
-
-`|-`webpack.config.js 打包配置
-
-
+```
+- dist 打包之后的目录
+- docs 文档目录
+- publicImg 上传的图片目录
+- settings 应用设置目录
+- src 核心源码目录
+    - backup-db 数据库备份目录
+    - config 项目配置目录
+    - controller 控制器目录
+    - dao 数据获取与ORM框架model对应
+    - middleware 中间件目录
+    - migrations 迁移文件目录
+    - models 数据模型目录
+    - route 路由目录
+    - seeders 数据种子文件目录
+    - service 链接控制器与模型
+    - utils 工具函数目录
+    - static 静态文件目录
+    - views 前端模板引擎目录
+    - index.js 入口文件
+- backup-db.js 备份
+- install.js 命令行工具
+- watchChange.js 开发时工具，扫描器
+- webpack.config.js 打包配置
+```
 ## 环境准备
 ```
 mysql 5.6
