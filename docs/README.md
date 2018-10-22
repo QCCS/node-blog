@@ -10,16 +10,18 @@
 + 注册与Jwt登陆认证
 + 用户以及权限管理
 + 博客发布管理
-+ 文件上传
++ [+] 文件上传
 + 博客标签管理
 + 博客评论管理
-+ 博客点赞
++ ~~博客点赞~~
 + 博客阅读量
 + 博客前台 ejs 模板引擎
 + 集成 swagger 文档
-+ 日志记录
++ [+] 日志记录
 + 项目数据备份
-+ 开发以及部署命令行工具
++ [] 开发扫描工具
++ 安装部署命令行工具
++ [] 集成测试
 
 ## 开发相关
 + 控制器自动扫描
@@ -164,25 +166,31 @@ node install help
 node install help
 生成环境：打包与数据库环境准备:
 node install initAll
+测试:
+node install test
+测试，显示报表:
+node install nyc
+生成html测试报表:
+node install testReport
 安装项目依赖:
 node install init
-shell创建Prod数据库:
+推荐使用：shell创建Prod数据库:
 node install mysqlCreateProd
-shell创建dev数据库:
+推荐使用：shell创建dev数据库:
 node install mysqlCreateDev
-shell创建test数据库:
+推荐使用：shell创建test数据库:
 node install mysqlCreateTest
-直接导入sql文件:
+直接导入生产环境sql文件，sql文件放在项目跟目录:
 node install mysqlSource
-sequlize创建dev数据库:
+不推荐使用：sequlize创建dev数据库:
 node install sequlizeDevDB
 sequlize创建dev数据表:
 node install sequlizeDevTable
-sequlize创建test数据库:
+不推荐使用：sequlize创建test数据库:
 node install sequlizeTestDB
 sequlize创建test数据表:
 node install sequlizeTestTable
-sequlize创建Prod数据库:
+不推荐使用：sequlize创建Prod数据库:
 node install sequlizeProdDB
 sequlize创建Prod数据表:
 node install sequlizeProdTable
@@ -194,7 +202,7 @@ prod填充数据:
 node install seedDataProd
 打包开发环境:
 node install buildDev
-打包开发环境:
+运行开发环境:
 node install runDev
 打包Test环境:
 node install buildTest
@@ -210,8 +218,36 @@ node install backup
 node install backupTest
 备份prod数据库:
 node install backupProd
-## 项目截图
+
 ```
+
+##项目依赖介绍
+- koa2 node后端框架
+- babel-plugin-transform-runtime 运行时转换语言包
+- mysql-backup-db 备份数据库
+- babel-cli 语言转换工具
+- webpack-cli 打包命令工具
+- webpack 打包工具
+- copy-webpack-plugin 打包时拷贝文件
+- koa-bodyparser 请求体转换
+- ava 测试
+- request 测试接口
+- nyc 测试报表
+- sequelize orm框架
+- sequelize-cli 迁移文件命令行工具
+- mysql2 sequelize 链接数据库依赖
+- mysql 原生node链接数据库
+- koa2-swagger-ui 文档
+- ejs 模板引擎
+- koa-router 路由中间件
+- koa2-file-upload 文件上传
+- jsonwebtokentoken 签名与解密
+- koa-jwt token http认证
+- koa-static 静态文件配置
+- chokidar 监听文件变化
+- koa-logger 请求输出log中间件
+
+## 项目截图
 登陆
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/login.png)
 新增博客

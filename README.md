@@ -166,25 +166,31 @@ node install help
 node install help
 生成环境：打包与数据库环境准备:
 node install initAll
+测试:
+node install test
+测试，显示报表:
+node install nyc
+生成html测试报表:
+node install testReport
 安装项目依赖:
 node install init
-shell创建Prod数据库:
+推荐使用：shell创建Prod数据库:
 node install mysqlCreateProd
-shell创建dev数据库:
+推荐使用：shell创建dev数据库:
 node install mysqlCreateDev
-shell创建test数据库:
+推荐使用：shell创建test数据库:
 node install mysqlCreateTest
-直接导入sql文件:
+直接导入生产环境sql文件，sql文件放在项目跟目录:
 node install mysqlSource
-sequlize创建dev数据库:
+不推荐使用：sequlize创建dev数据库:
 node install sequlizeDevDB
 sequlize创建dev数据表:
 node install sequlizeDevTable
-sequlize创建test数据库:
+不推荐使用：sequlize创建test数据库:
 node install sequlizeTestDB
 sequlize创建test数据表:
 node install sequlizeTestTable
-sequlize创建Prod数据库:
+不推荐使用：sequlize创建Prod数据库:
 node install sequlizeProdDB
 sequlize创建Prod数据表:
 node install sequlizeProdTable
@@ -196,7 +202,7 @@ prod填充数据:
 node install seedDataProd
 打包开发环境:
 node install buildDev
-打包开发环境:
+运行开发环境:
 node install runDev
 打包Test环境:
 node install buildTest
@@ -212,6 +218,7 @@ node install backup
 node install backupTest
 备份prod数据库:
 node install backupProd
+
 ```
 
 ##项目依赖介绍
