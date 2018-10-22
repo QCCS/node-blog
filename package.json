@@ -4,6 +4,7 @@
   "description": "node搭建博客",
   "main": "src/index.js",
   "scripts": {
+    "babelRun": "node_modules/.bin/babel-node src/index.js",
     "superdev": "supervisor dist/index.js",
     "dev": "node dist/index.js",
     "webpack": "node_modules/.bin/webpack",
@@ -16,7 +17,10 @@
   },
   "ava": {
     "files": [
-      "test/*.js"
+      "test/utils/*.test.js",
+      "test/route/*.test.js",
+      "test/service/*.test.js",
+      "test/**.test.js"
     ],
     "source": [
       "**/*.{js,jsx}",
@@ -54,21 +58,22 @@
   },
   "homepage": "https://github.com/QCCS/node-blog#readme",
   "devDependencies": {
+    "chokidar": "^2.0.4",
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.5.2",
-    "koa-logger": "^3.2.0",
-    "mysql-backup-db": "^1.0.1",
     "nyc": "^13.1.0",
+    "request": "^2.88.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "chokidar": "^2.0.4",
+    "mysql-backup-db": "^1.0.1",
     "ejs": "^2.6.1",
+    "koa-logger": "^3.2.0",
     "jsonwebtoken": "^8.3.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",

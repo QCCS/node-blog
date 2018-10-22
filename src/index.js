@@ -43,3 +43,8 @@ app.use(controller.initController.initController)
 //监听端口
 app.listen(config.port);
 console.log("监听端口：" + config.port);
+
+exports.app = app;
+// let nodeBlog = require("./dist/index.js");
+// let nodeBlog = require("node-blog");
+// nodeBlog.app.listen(confg);
