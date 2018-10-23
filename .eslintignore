@@ -1,0 +1,5 @@
+# 以下文件不检测，只是针对controller service 目录检测
+install.js
+watchChange.js
+webpack.config.js
+backup-db.js
