@@ -1,7 +1,7 @@
 > node-blog 可能是最好的Node博客系统。
 # 项目介绍文档
-使用Nodejs+mysql搭建的博客系统。使用koa2 ES6语法开发，webpack打包。
-数据库方面，既可以直接原生连接进行数据操作，也可以使用sequlize ORM框架对数据操作。
+使用Nodejs+mysql搭建的博客系统。使用Koa2 ES6语法开发，Webpack打包。
+数据库方面，既可以直接原生连接进行数据操作，也可以使用Sequlize ORM框架对数据操作。
 
 [项目地址](https://github.com/QCCS/node-blog)
 
@@ -25,13 +25,12 @@
 + [ ] 集成测试
 ## 开发相关
 + [x] 控制器自动扫描
-+ [x] service自动扫描
-+ [ ] swagger文档自动生成
++ [x] service 自动扫描
++ [ ] swagger 文档自动生成
 + [ ] 接口自动扫描
 + [ ] 开发自动化
 
 ## 项目目录
-
 ```
 - dist 打包之后的目录
 - docs 文档目录
@@ -106,6 +105,7 @@ pm2 start dist/index.js -i 0 --name "app-name"
 ```
 ## 开发项目
 ```
+nvm use 9
 //环境准备
 node install init
 node install mysqlCreateDev
@@ -202,29 +202,37 @@ node install backupProd
 
 ##项目依赖介绍
 - koa2 node后端框架
-- babel-plugin-transform-runtime 运行时转换语言包
-- mysql-backup-db 备份数据库
+
 - babel-cli 语言转换工具
-- webpack-cli 打包命令工具
+- babel-plugin-transform-runtime 运行时转换语言包
+
 - webpack 打包工具
+- webpack-cli 打包命令工具
 - copy-webpack-plugin 打包时拷贝文件
+
 - koa-bodyparser 请求体转换
-- ava 测试
-- request 测试接口
-- nyc 测试报表
-- sequelize orm框架
-- sequelize-cli 迁移文件命令行工具
-- mysql2 sequelize 链接数据库依赖
-- mysql 原生node链接数据库
-- koa2-swagger-ui 文档
-- ejs 模板引擎
+- koa2-swagger-ui swagger文档
+- koa-views 模板引擎
+- ejs 模板引擎语法
 - koa-router 路由中间件
 - koa2-file-upload 文件上传
 - jsonwebtokentoken 签名与解密
 - koa-jwt token http认证
 - koa-static 静态文件配置
-- chokidar 监听文件变化
 - koa-logger 请求输出log中间件
+
+- mysql 原生node链接数据库
+- mysql2 sequelize 链接数据库依赖
+- sequelize orm框架
+- sequelize-cli 迁移文件命令行工具
+
+- ava 测试
+- request 测试接口
+- nyc 测试报表
+
+- chokidar 监听文件变化
+- mysql-backup-db 备份数据库
+
 
 ## 项目截图
 登陆
@@ -240,4 +248,26 @@ node install backupProd
 获取用户列表1
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/user.png)
 
+## 其他博客项目
+这也是我为什么做博客系统的原因
++ ~~无接口文档~~
++ ~~无开发自动化~~
++ ~~无扫描器~~
++ ~~无测试报告~~
++ ~~无多环境一键部署~~
++ ~~无前后端分离~~
++ ~~无数据迁移与备份~~
++ ~~无日志记录~~
++ ~~无运维监控~~
 ## 发布历史
+branch:date-feature_name
+
+## 参考网站
+- [Node支持情况](https://node.green)
+- [koajs](https://koajs.com)
+- [sequelizejs](http://docs.sequelizejs.com)
+- [ejs](http://ejs.co)
+- [ava](https://github.com/avajs/ava)
+
+
+
