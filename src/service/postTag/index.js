@@ -1,7 +1,7 @@
 /**
  * Created by zhouli on 18/10/22
  */
-import postReadService from './postReadService';
+import postTagService from './postTagService';
 export default {
-    postReadService
+    postTagService
 };

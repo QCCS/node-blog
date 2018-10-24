@@ -2,9 +2,12 @@
  * Created by zhouli on 18/10/22
  */
 import test from 'ava';
-import userService from '../../src/service/user/userService';
-test('userService 测试', async t => {
-    const users = await userService.getAllUser();
-    t.is(users[0].id, 1);
+import service from '../../src/service';
+test('service import is ok', t => {
+    let i = 0;
+    for(let key in service){
+        i++;
+    }
+    t.is(i, 15);
 });
 
