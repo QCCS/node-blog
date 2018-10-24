@@ -23,6 +23,7 @@
 + [ ] 开发扫描工具
 + [x] 安装部署命令行工具
 + [ ] 集成测试
+
 ## 开发相关
 + [x] 控制器自动扫描
 + [x] service 自动扫描
@@ -31,7 +32,7 @@
 + [ ] 开发自动化
 
 ## 项目目录
-```
+> node-blog 
 - dist 打包之后的目录
 - docs 文档目录
 - publicImg 上传的图片目录
@@ -55,7 +56,7 @@
 - install.js 命令行工具
 - watchChange.js 开发时工具，扫描器
 - webpack.config.js 打包配置
-```
+
 ## 环境准备
 ```
 mysql 5.6
@@ -63,10 +64,12 @@ node 8+
 pm2 2.8
 
 ```
+
 ## 开始使用 
 ```
 git clone -b master https://github.com/QCCS/tech-share-s.git
 ```
+
 ## 项目设置
 应用端口与数据库设置 settings/appSetting.js
 ```
@@ -103,6 +106,7 @@ export default {
 node install initAll
 pm2 start dist/index.js -i 0 --name "app-name"
 ```
+
 ## 开发项目
 ```
 nvm use 9
@@ -121,6 +125,20 @@ node watchChange.js
 npm run superdev
 ```
 开发时建议运行 watchChange.js 让扫描器自动扫描
+
+## 开发自动测试
+```
+//测试
+npm run test
+//测试并且生成报表
+npm run nyc
+//生成html测试报表
+npm run testReport
+```
+测试
+![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/testing.png)
+测试报表
+![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/test-report.png)
 ## 部署测试环境
 ```
 //环境准备
@@ -201,15 +219,13 @@ node install backupProd
 ```
 
 ## 项目依赖介绍
+> dependencies & devDependencies
 - koa2 node后端框架
-
 - babel-cli 语言转换工具
 - babel-plugin-transform-runtime 运行时转换语言包
-
 - webpack 打包工具
 - webpack-cli 打包命令工具
 - copy-webpack-plugin 打包时拷贝文件
-
 - koa-bodyparser 请求体转换
 - koa2-swagger-ui swagger文档
 - koa-views 模板引擎
@@ -220,21 +236,16 @@ node install backupProd
 - koa-jwt token http认证
 - koa-static 静态文件配置
 - koa-logger 请求输出log中间件
-
 - bcryptjs 密码加密加盐 
-
 - mysql 原生node链接数据库
 - mysql2 sequelize 链接数据库依赖
 - sequelize orm框架
 - sequelize-cli 迁移文件命令行工具
-
 - ava 测试
 - request 测试接口
 - nyc 测试报表
-
 - chokidar 监听文件变化
 - mysql-backup-db 备份数据库
-
 
 ## 项目截图
 登陆
@@ -264,7 +275,6 @@ node install backupProd
 + ~~无运维监控~~
 
 ## 发布历史
-
 branch:date-feature_name
 
 ## 参考网站
