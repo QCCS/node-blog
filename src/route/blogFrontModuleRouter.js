@@ -7,11 +7,11 @@ import postCommentService from '../service/postComment/postCommentService';
 import postTagService from '../service/postTag/postTagService';
 import postLikeService from '../service/postLike/postLikeService';
 import postReadService from '../service/postRead/postReadService';
-
+import blogSetting from '../../settings';
 // 路由配置
 const router = new Router(
     {
-        prefix: '/blog'//每一个路由的前缀
+        prefix: blogSetting.blog_front_setting.prefix//每一个路由的前缀
     }
 );
 

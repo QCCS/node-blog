@@ -8,10 +8,11 @@ import postCommentController from '../controller/postComment';
 import postLikeController from '../controller/postLike';
 import postReadController from '../controller/postRead';
 import postTagController from '../controller/postTag';
+import blogSetting from '../../settings';
 // 路由配置
 const router = new Router(
     {
-        prefix: '/blog_admin'//每一个路由的前缀
+        prefix: blogSetting.blog_admin_setting.prefix//每一个路由的前缀
     }
 );
 

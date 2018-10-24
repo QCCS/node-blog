@@ -25,5 +25,14 @@ export default {
         "port": "3306",
         "database": "node_blog_prod"
     },
-    "logsPath":"logs/"
+    "logsPath":"logs/",
+    "blog_admin_setting":{
+        "prefix":"admin"
+    },
+    "blog_front_setting":{
+        "prefix":"blog"
+    },
+    "blog_setting":{
+        "prefix":"api"
+    }
 }

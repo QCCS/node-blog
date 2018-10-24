@@ -5,11 +5,11 @@ import permissionController from '../controller/permission';
 import roleController from '../controller/role';
 import rolePermissionController from '../controller/rolePermission';
 import userRoleController from '../controller/userRole';
-
+import blogSetting from '../../settings';
 // 路由配置
 const router = new Router(
     {
-        prefix: '/api'//每一个路由的前缀
+        prefix: blogSetting.blog_setting.prefix//每一个路由的前缀
     }
 );
 
