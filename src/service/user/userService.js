@@ -39,11 +39,10 @@ async function updateUser(id, name) {
     return res;
 }
 
-async function getLoginUser(mobile,password) {
-    let res = await db.sequelize.query('select * from user where mobile = ? and password = ?',
-        { replacements: [mobile,password], type: db.sequelize.QueryTypes.SELECT });
-    //密码不要加密与返回
-    delete res[0].password;
+async function getLoginUser(mobile) {
+    //返回出去，需要与密码校验，密码加密了
+    let res = await db.sequelize.query('select * from user where mobile = ?',
+        { replacements: [mobile], type: db.sequelize.QueryTypes.SELECT });
     return res[0];
 }
 async function getUser(id) {
@@ -62,5 +61,5 @@ let userService = {
     getUser,
     getLoginUser,
     getAllUser
-}
+};
 export default userService;

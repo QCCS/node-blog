@@ -11,7 +11,7 @@ chokidar.watch('./src',{ignored:[/controller\/index\.js/, /service\/index\.js/]}
     console.log('控制器扫描：');
     controllerScanner.init();
     console.log('service扫描：');
-    serviceScanner.scanner.init('./src/service','Service');
+    serviceScanner.scanner('./src/service','Service');
     console.log('重新打包：');
     process.exec('node_modules/.bin/webpack',function (error, stdout, stderr) {
         if (error !== null) {

@@ -221,6 +221,8 @@ node install backupProd
 - koa-static 静态文件配置
 - koa-logger 请求输出log中间件
 
+- bcryptjs 密码加密加盐 
+
 - mysql 原生node链接数据库
 - mysql2 sequelize 链接数据库依赖
 - sequelize orm框架

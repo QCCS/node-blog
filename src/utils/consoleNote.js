@@ -7,6 +7,8 @@ export default function logNote(msg) {
     let _path = appSettings.logsPath;
     if(typeof msg != 'string'){
         msg = JSON.stringify(msg);
+    }else {
+        msg+='\n';
     }
     let t = new Date();
     let _t = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate() + '-' + t.getHours();

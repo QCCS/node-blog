@@ -27,12 +27,12 @@ export default {
     },
     "logsPath":"logs/",
     "blog_admin_setting":{
-        "prefix":"admin"
+        "prefix":"/admin"
     },
     "blog_front_setting":{
-        "prefix":"blog"
+        "prefix":"/blog"
     },
     "blog_setting":{
-        "prefix":"api"
+        "prefix":"/api"
     }
 }

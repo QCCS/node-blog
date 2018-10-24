@@ -1,9 +1,6 @@
 /**
  * Created by zhouli on 2018/10/24.
  */
-/**
- * Created by zhouli on 18/10/22
- */
 import test from 'ava';
 import service from '../../src/service';
 
@@ -11,10 +8,11 @@ let user = service.userService.userService;
 test(' insert user', async t => {
     let name = "testName" + parseInt(Math.random() * 100000);
     let mobile = "" + parseInt(Math.random() * 100000000);
-    const res = await user.createUser(name, "mac123", mobile,
+    let password = "$2a$10$DIK0r9W.4ihVjVJLQAIN2OH7Fj/v0r47yKmfxDts/WaWHMvwi5Mni";
+    const res = await user.createUser(name, password, mobile,
         "123456789@qq.com", null);
     t.is(res.name, name);
-    t.is(res.password, "mac123");
+    t.is(res.password, password);
 
 });
 test('userService getAllUser', async t => {
@@ -34,6 +32,6 @@ test('userService updateUser', async t => {
 
 test('userService getLoginUser', async t => {
     const users = await user.getUser(1);
-    const res = await user.getLoginUser(users.mobile,users.password);
+    const res = await user.getLoginUser(users.mobile);
     t.is(res.mobile, users.mobile);
 });

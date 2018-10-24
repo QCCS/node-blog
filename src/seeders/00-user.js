@@ -5,7 +5,7 @@ module.exports = {
         return queryInterface.bulkInsert('user', [
             {
                 name: 'admin1',
-                password: 'mac123',
+                password: '$2a$10$DIK0r9W.4ihVjVJLQAIN2OH7Fj/v0r47yKmfxDts/WaWHMvwi5Mni',
                 mobile: '15921552946',
                 email: '15921552946@qq.com',
                 status:0,
@@ -14,7 +14,7 @@ module.exports = {
             },
             {
                 name: 'admin2',
-                password: 'mac123',
+                password: '$2a$10$DIK0r9W.4ihVjVJLQAIN2OH7Fj/v0r47yKmfxDts/WaWHMvwi5Mni',
                 mobile: '15921552947',
                 email: '15921552947@qq.com',
                 status:0,

@@ -38,13 +38,11 @@ async function updateRefreshToken(user_id, id, refresh_token) {
 }
 
 async function getRefreshToken(id) {
-    let res = await refreshToken.findById(id);
-    return res;
+    return await refreshToken.findById(id);
 }
 
 async function getAllRefreshToken() {
-    let res = await refreshToken.findAll();
-    return res;
+    return await refreshToken.findAll();
 }
 
 let refreshTokenService = {
@@ -53,5 +51,5 @@ let refreshTokenService = {
     updateRefreshToken,
     getRefreshToken,
     getAllRefreshToken
-}
+};
 export default refreshTokenService;
