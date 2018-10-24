@@ -1,6 +1,6 @@
 > node-blog 可能是最好的Node博客系统。
 # 项目介绍文档
-使用Nodejs+mysql搭建的博客系统。使用Koa2 ES6语法开发，Webpack打包。
+使用 Nodejs + mysql 搭建的博客系统。使用 Koa2 ES6 语法开发，Webpack打包。
 数据库方面，既可以直接原生连接进行数据操作，也可以使用Sequlize ORM框架对数据操作。
 
 [项目地址](https://github.com/QCCS/node-blog)
@@ -200,7 +200,7 @@ node install backupProd
 
 ```
 
-##项目依赖介绍
+## 项目依赖介绍
 - koa2 node后端框架
 
 - babel-cli 语言转换工具
@@ -251,7 +251,8 @@ node install backupProd
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/user.png)
 
 ## 其他博客项目
-这也是我为什么做博客系统的原因
+这也是我为什么做博客系统的原因，找不到一个我想要的。
+方便开发，扩展，测试，与部署
 + ~~无接口文档~~
 + ~~无开发自动化~~
 + ~~无扫描器~~
@@ -261,7 +262,9 @@ node install backupProd
 + ~~无数据迁移与备份~~
 + ~~无日志记录~~
 + ~~无运维监控~~
+
 ## 发布历史
+
 branch:date-feature_name
 
 ## 参考网站
