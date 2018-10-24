@@ -135,9 +135,9 @@ npm run nyc
 //生成html测试报表
 npm run testReport
 ```
-测试
+测试截图 npm run nyc
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/testing.png)
-测试报表
+测试报表 npm run testReport
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/test-report.png)
 ## 部署测试环境
 ```

@@ -23,7 +23,6 @@ async function deletePost(user_id, id) {
     // let res = await sequelize.query('DELETE * FROM post WHERE id = ?');
     return res;
 }
-
 async function updatePost(user_id, id, title, desc, content, is_delete, is_draft) {
     let res = await post.update(
         {
