@@ -38,7 +38,7 @@ async function createTag(user_id, tag_name, post_id) {
         return {
             res,
             pt
-        }
+        };
     }).then(function (results) {
         /* 操作成功，事务会自动提交 */
         //返回到控制器
@@ -92,5 +92,5 @@ let tagService = {
     updateTag,
     getTag,
     getAllTag
-}
+};
 export default tagService;

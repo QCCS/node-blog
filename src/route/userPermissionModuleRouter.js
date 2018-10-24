@@ -5,7 +5,7 @@ import permissionController from '../controller/permission';
 import roleController from '../controller/role';
 import rolePermissionController from '../controller/rolePermission';
 import userRoleController from '../controller/userRole';
-import blogSetting from '../../settings';
+import blogSetting from '../../settings/appSettings';
 // 路由配置
 const router = new Router(
     {

@@ -45,5 +45,5 @@ let roleService = {
     updateRole,
     getRole,
     getAllRole
-}
+};
 export default roleService;

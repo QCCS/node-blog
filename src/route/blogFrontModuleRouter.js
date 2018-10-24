@@ -7,7 +7,7 @@ import postCommentService from '../service/postComment/postCommentService';
 import postTagService from '../service/postTag/postTagService';
 import postLikeService from '../service/postLike/postLikeService';
 import postReadService from '../service/postRead/postReadService';
-import blogSetting from '../../settings';
+import blogSetting from '../../settings/appSettings';
 // 路由配置
 const router = new Router(
     {

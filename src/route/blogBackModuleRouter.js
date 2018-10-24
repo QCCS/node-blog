@@ -8,7 +8,7 @@ import postCommentController from '../controller/postComment';
 import postLikeController from '../controller/postLike';
 import postReadController from '../controller/postRead';
 import postTagController from '../controller/postTag';
-import blogSetting from '../../settings';
+import blogSetting from '../../settings/appSettings';
 // 路由配置
 const router = new Router(
     {

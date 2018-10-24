@@ -59,5 +59,5 @@ let postService = {
     updatePost,
     getPost,
     getAllPost
-}
+};
 export default postService;

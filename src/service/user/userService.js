@@ -15,7 +15,7 @@ async function createUser(name, password, mobile, email,created_by) {
 }
 
 async function deleteUser(user_id, id) {
-    let res = await user.destroy({
+    return await user.destroy({
         where: {
             id,
             user_id
@@ -23,17 +23,15 @@ async function deleteUser(user_id, id) {
     });
     // sql
     // let res = await sequelize.query('DELETE * FROM user WHERE id = ?');
-    return res;
 }
 
-async function updateUser(user_id, id, name) {
+async function updateUser(id, name) {
     let res = await user.update(
         {
             name: name
         },
         {
             where: {
-                user_id,
                 id
             }
         }

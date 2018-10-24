@@ -36,7 +36,7 @@ async function createComment(user_id, content, post_id) {
             return {
                 res,
                 pc
-            }
+            };
         }).then(function (results) {
             /* 操作成功，事务会自动提交 */
             //返回到控制器
@@ -77,7 +77,7 @@ async function deleteComment(id, user_id) {
 }
 
 async function updateCommentByRoot(id, content) {
-    let res = await comment.update(
+    return await comment.update(
         {
             comment: content
         },
@@ -87,11 +87,11 @@ async function updateCommentByRoot(id, content) {
             }
         }
     );
-    return res;
+
 }
 
 async function updateComment(id, user_id, content) {
-    let res = await comment.update(
+    return await comment.update(
         {
             comment: content
         },
@@ -102,17 +102,14 @@ async function updateComment(id, user_id, content) {
             }
         }
     );
-    return res;
 }
 
 async function getComment(id) {
-    let res = await comment.findById(id);
-    return res;
+    return await comment.findById(id);
 }
 
 async function getAllComment() {
-    let res = await comment.findAll();
-    return res;
+    return await comment.findAll();
 }
 
 let commentService = {
@@ -123,5 +120,5 @@ let commentService = {
     updateCommentByRoot,
     getComment,
     getAllComment
-}
+};
 export default commentService;

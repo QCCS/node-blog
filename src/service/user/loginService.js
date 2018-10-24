@@ -23,7 +23,7 @@ async function loginService(mobile, password) {
                 status: 1,
                 message: 'FAILURE',
                 code: 2
-            }
+            };
         } else {
             if (password === user[0].password) {
                 res = {
@@ -32,20 +32,20 @@ async function loginService(mobile, password) {
                     data: {
                         id: user[0].id
                     }
-                }
+                };
             } else {
                 res = {
                     status: 1,
                     message: 'FAILURE',
                     code: 3
-                }
+                };
             }
         }
     } catch (e) {
-        console.error(e)
+        // console.error(e)
     }
-    console.log(res);
-    return res
+    // console.log(res);
+    return res;
 }
 
 export default loginService;

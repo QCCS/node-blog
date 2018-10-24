@@ -55,5 +55,5 @@ let imageService = {
     updateImage,
     getImage,
     getAllImage
-}
+};
 export default imageService;
