@@ -11,7 +11,6 @@ async function createPost(user_id, title, desc, content, is_delete, is_draft) {
     });
     return res;
 }
-
 async function deletePost(user_id, id) {
     let res = await post.destroy({
         where: {

@@ -247,6 +247,13 @@ node install backupProd
 - chokidar 监听文件变化
 - mysql-backup-db 备份数据库
 
+|    name    | desc |
+| ---------- | --- |
+| koa2    | node后端框架 |
+| babel-cli | 语言转换工具 |
+
+
+
 ## 项目截图
 登陆
 ![](https://raw.githubusercontent.com/QCCS/node-blog/master/docs/imgs/login.png)
