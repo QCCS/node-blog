@@ -1,4 +1,4 @@
-> node-blog 可能是最好的Node博客系统。
+> node-blog 可能是最好的Node博客系统。基于nice-swa后端脚手架项目。
 # 项目介绍文档
 使用 Nodejs + mysql 搭建的博客系统。使用 Koa2 ES6 语法开发，Webpack打包。
 数据库方面，既可以直接原生连接进行数据操作，也可以使用Sequlize ORM框架对数据操作。
