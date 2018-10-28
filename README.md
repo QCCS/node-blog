@@ -290,6 +290,7 @@ branch:date-feature_name
 - [sequelizejs](http://docs.sequelizejs.com)
 - [ejs](http://ejs.co)
 - [ava](https://github.com/avajs/ava)
-
+- [wordpress](https://wordpress.org/)
+- [jpress](http://www.jpress.io/)
 
 
