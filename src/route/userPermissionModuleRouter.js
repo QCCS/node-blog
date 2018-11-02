@@ -20,6 +20,7 @@ const router = new Router(
 router
     //测试用get
     .get('/login', userController.loginController)
+    .post('/refresh', userController.refreshController)
     .post('/register', userController.createUser)
     .post('/user', userController.createUser)
     .get('/user', userController.getAllUser)

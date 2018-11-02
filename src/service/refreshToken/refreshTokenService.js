@@ -12,10 +12,9 @@ async function createRefreshToken(user_id, refresh_token, client_id,expires) {
     return res;
 }
 
-async function deleteRefreshToken(user_id, id) {
+async function deleteRefreshToken(user_id) {
     let res = await refreshToken.destroy({
         where: {
-            id,
             user_id
         }
     });

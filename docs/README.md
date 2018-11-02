@@ -1,7 +1,7 @@
 # todo list
 - ssr-react服务端渲染 
 - nice-swa项目官方网站
-- token入表
+- ~~token入表~~
 - token刷新机制
 - 接口错误捕获
 - 文档swagger 生成

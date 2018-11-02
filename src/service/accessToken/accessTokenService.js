@@ -12,10 +12,9 @@ async function createAccessToken(user_id, access_token, client_id,expires) {
     return res;
 }
 
-async function deleteAccessToken(user_id, id) {
+async function deleteAccessToken(user_id) {
     let res = await accessToken.destroy({
         where: {
-            id,
             user_id
         }
     });

@@ -14,6 +14,7 @@ export default function koaJwtConfig() {
         /^\/doc*/,//文档忽略
         /^\/swagger-docs*/,//文档忽略
         /^\/swagger/,//文档忽略
+        /^\/api\/refresh/,//刷新token
         /^\/api\/register///注册
     ]
     return koaJwt({
