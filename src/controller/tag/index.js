@@ -1,6 +1,6 @@
 // 标签 curd
 import service from '../../service';
-const tagService = service.tagService;
+const tagService = service.tagService.tagService;
 async function createTag(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

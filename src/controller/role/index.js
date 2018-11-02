@@ -1,5 +1,5 @@
 import service from '../../service';
-const roleService = service.roleService;
+const roleService = service.roleService.roleService;
 async function createRole(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

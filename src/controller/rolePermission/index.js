@@ -1,7 +1,7 @@
 //role rolePermission
 import consoleNote from '../../utils/consoleNote';
 import service from '../../service';
-const rolePermissionService = service.rolePermissionService;
+const rolePermissionService = service.rolePermissionService.rolePermissionService;
 async function createRolePermission(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

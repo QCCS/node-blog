@@ -1,5 +1,5 @@
 import service from '../../service';
-const postLikeService = service.postLikeService;
+const postLikeService = service.postLikeService.postLikeService;
 async function createPostLike(ctx) {
     let data = ctx.request.body;
     console.log(data);

@@ -1,6 +1,6 @@
 import consoleNote from '../../utils/consoleNote';
 import service from '../../service';
-const postTagService = service.postTagService;
+const postTagService = service.postTagService.postTagService;
 async function createPostTag(ctx) {
     let data = ctx.request.body;
     console.log(data);
@@ -29,12 +29,12 @@ async function deletePostTag(ctx) {
 async function getPostTag(ctx) {
     let postTag = await postTagService.getPostTag(ctx.params.id);
     ctx.body = postTag;
-    console.log(postTag)
+    console.log(postTag);
 }
 async function getAllPostTag(ctx) {
     let postTag = await postTagService.getAllPostTag();
     ctx.body = postTag;
-    console.log(postTag)
+    console.log(postTag);
 }
 
 let postTagController = {

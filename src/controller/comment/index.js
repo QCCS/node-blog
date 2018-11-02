@@ -1,6 +1,6 @@
 // 评论 curd
 import service from '../../service';
-const commentService = service.commentService;
+const commentService = service.commentService.commentService;
 async function createComment(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

@@ -40,11 +40,9 @@ async function updateUser(id, name) {
 }
 
 async function getLoginUser(mobile) {
-    consoleNote.log(mobile)
     //返回出去，需要与密码校验，密码加密了
     let res = await db.sequelize.query('select * from user where mobile = ?',
         { replacements: [mobile], type: db.sequelize.QueryTypes.SELECT });
-    consoleNote.log(res)
     return res[0];
 }
 async function getUser(id) {

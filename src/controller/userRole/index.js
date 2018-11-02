@@ -1,7 +1,7 @@
 //userRole
 import consoleNote from '../../utils/consoleNote';
 import service from '../../service';
-const userRoleService = service.userRoleService;
+const userRoleService = service.userRoleService.userRoleService;
 async function createUserRole(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

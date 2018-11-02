@@ -1,6 +1,6 @@
 import consoleNote from '../../utils/consoleNote';
 import service from '../../service';
-const postCommentService = service.postCommentService;
+const postCommentService = service.postCommentService.postCommentService;
 async function createPostComment(ctx) {
     let data = ctx.request.body;
     //事务

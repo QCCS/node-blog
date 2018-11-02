@@ -1,6 +1,6 @@
 // 图片 curd
 import service from '../../service';
-const imageService = service.imageService;
+const imageService = service.imageService.imageService;
 async function createImage(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

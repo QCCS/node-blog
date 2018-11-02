@@ -1,10 +1,10 @@
 // 博客 curd
 import service from '../../service';
-const postService = service.postService;
-const postCommentService = service.postCommentService;
-const postTagService = service.postTagService;
-const postLikeService = service.postLikeService;
-const postReadService = service.postReadService;
+const postService = service.postService.postService;
+const postCommentService = service.postCommentService.postCommentService;
+const postTagService = service.postTagService.postTagService;
+const postLikeService = service.postLikeService.postLikeService;
+const postReadService = service.postReadService.postReadService;
 async function createPost(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

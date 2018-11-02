@@ -7,6 +7,7 @@ export default function logNote(msg) {
     let _path = appSettings.logsPath;
     if(typeof msg != 'string'){
         msg = JSON.stringify(msg);
+        msg+='\n';
     }else {
         msg+='\n';
     }
