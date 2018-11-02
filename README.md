@@ -1,3 +1,14 @@
+# todo list
+- ssr-react服务端渲染 
+- nice-swa项目官方网站
+- token入表
+- token刷新机制
+- 接口错误捕获
+- 文档swagger 生成
+- 接口测试
+- 用户权限管理
+- 博客添加md字段保存
+
 > node-blog 可能是最好的Node博客系统。基于 nice-swa 后端脚手架项目。
 # 项目介绍文档
 使用 Nodejs + mysql 搭建的博客系统。使用 Koa2 ES6 语法开发，Webpack打包。
