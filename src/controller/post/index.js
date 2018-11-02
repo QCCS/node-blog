@@ -63,7 +63,6 @@ async function getPost(ctx) {
 async function getAllPost(ctx) {
     let post = await postService.getAllPost();
     ctx.body = post;
-    console.log(post);
 }
 let postController = {
     createPost,

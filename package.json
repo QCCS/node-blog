@@ -17,10 +17,8 @@
     },
     "ava": {
         "files": [
-            "test/utils/*.test.js",
-            "test/route/*.test.js",
-            "test/service/*.test.js",
-            "test/**.test.js"
+            "test/route/*.test.js"
+
         ],
         "source": [
             "**/*.{js,jsx}",

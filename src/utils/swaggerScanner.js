@@ -98,6 +98,14 @@ function modelListToDefinitions(models, apiList, tplJson) {
     return tplJson;
 }
 
-let res = modelListToDefinitions(modelsListJson.modelList, apiListJson.list, tplJson);
-let targetFile = JSON.stringify(res);
-fs.writeFileSync('src/static/swagger-docs/api-doc.json', targetFile);
+function init(path, fileName) {
+    let res = modelListToDefinitions(modelsListJson.modelList, apiListJson.list, tplJson);
+    let targetFile = JSON.stringify(res);
+    fs.writeFileSync('src/static/swagger-docs/api-doc.json', targetFile);
+}
+init();
+//在根目录运行 node src/utils/swaggerScanner.js
+//会生成 src/static/swagger-docs/api-doc.json
+module.exports = {
+    init
+}

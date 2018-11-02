@@ -9,6 +9,7 @@ package.json 配置
 ```
   "ava": {
     "files": [
+    //可以去掉部分，当做一部分测试的时候
       "test/utils/*.test.js",
       "test/route/*.test.js",
       "test/service/*.test.js",
