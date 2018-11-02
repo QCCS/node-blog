@@ -46,7 +46,7 @@ function getExport(arr, scanName) {
         str += ",";
     }
     str += "\n";
-    str += "}";
+    str += "};";
     // console.log(str)
     return str;
 }

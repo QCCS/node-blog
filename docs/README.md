@@ -1,4 +1,15 @@
-> node-blog 可能是最好的Node博客系统。
+# todo list
+- ssr-react服务端渲染 
+- nice-swa项目官方网站
+- token入表
+- token刷新机制
+- 接口错误捕获
+- 文档swagger 生成
+- 接口测试
+- 用户权限管理
+- ~~博客添加md字段保存~~
+
+> node-blog 可能是最好的Node博客系统。基于 nice-swa 后端脚手架项目。
 # 项目介绍文档
 使用 Nodejs + mysql 搭建的博客系统。使用 Koa2 ES6 语法开发，Webpack打包。
 数据库方面，既可以直接原生连接进行数据操作，也可以使用Sequlize ORM框架对数据操作。
@@ -248,7 +259,7 @@ node install backupProd
 - mysql-backup-db 备份数据库
 
 |    name    | desc |
-| ---------- | --- |
+| :---------- | :--- |
 | koa2    | node后端框架 |
 | babel-cli | 语言转换工具 |
 
@@ -290,6 +301,7 @@ branch:date-feature_name
 - [sequelizejs](http://docs.sequelizejs.com)
 - [ejs](http://ejs.co)
 - [ava](https://github.com/avajs/ava)
-
+- [wordpress](https://wordpress.org/)
+- [jpress](http://www.jpress.io/)
 
 

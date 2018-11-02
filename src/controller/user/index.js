@@ -2,12 +2,13 @@
 import jwt from 'jsonwebtoken';
 //密码加密加盐
 import bcrypt from 'bcryptjs';
-import service from '../../service';
+import userService from '../../service/user/userService';
+import accessTokenService from '../../service/accessToken/accessTokenService';
+import refreshTokenService from '../../service/refreshToken/refreshTokenService';
 import config from '../../config';
 import consoleNote from '../../utils/consoleNote';
-const userService = service.userService;
 //todo
-//需要是动态值
+//需要是动态值 saltTimes
 const saltTimes = 10;
 async function loginController(ctx) {
     // let params = ctx.params;
@@ -17,10 +18,12 @@ async function loginController(ctx) {
     //console.log(params);
     //console.log(data);
     //console.log(query);
-
     consoleNote(query.password);
-
+    consoleNote(query.mobile);
+    consoleNote(userService);
+    consoleNote(userService.getLoginUser);
     let res = await userService.getLoginUser(query.mobile);
+    consoleNote(res);
     // 登录成功，签发token
     if(res.id && await bcrypt.compare(query.password, res.password)){
         let userToken = res;
@@ -29,6 +32,19 @@ async function loginController(ctx) {
         res.token = {};
         res.token.access_token = access_token;
         res.token.refresh_token = refresh_token;
+        // todo
+        // 存toten
+        // user_id,
+        //     access_token,
+        //     client_id,
+        //     expires
+
+        let expiredTime = new Date((new Date().getTime())+60*60*1000);//1小时
+        let expiredTimeR = new Date((new Date().getTime())+168*60*60*1000);//168小时
+        let tokenRes = await accessTokenService.createAccessToken(res.id,access_token,'test',expiredTime);
+        let refreshTokenRes = await refreshTokenService.createRefreshToken(res.id,refresh_token,'test',expiredTimeR);
+        consoleNote(tokenRes);
+        consoleNote(refreshTokenRes);
         //把这个token，加到登陆接口的响应体里面去
         delete res.password;
         ctx.body = res;

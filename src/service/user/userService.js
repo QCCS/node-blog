@@ -1,6 +1,6 @@
 import user from '../../models/user';
 import db from '../../utils/sequelizeQuery';
-
+import consoleNote from '../../utils/consoleNote';
 async function createUser(name, password, mobile, email,created_by) {
     let res = await user.create({
         name,
@@ -40,9 +40,11 @@ async function updateUser(id, name) {
 }
 
 async function getLoginUser(mobile) {
+    consoleNote.log(mobile)
     //返回出去，需要与密码校验，密码加密了
     let res = await db.sequelize.query('select * from user where mobile = ?',
         { replacements: [mobile], type: db.sequelize.QueryTypes.SELECT });
+    consoleNote.log(res)
     return res[0];
 }
 async function getUser(id) {
