@@ -1,0 +1,382 @@
+{
+    "list": [
+        {
+            "method": "post",
+            "api_url": "/comment",
+            "params": "commentController.createComment",
+            "modelName": "comment"
+        },
+        {
+            "method": "delete",
+            "api_url": "/comment/:id",
+            "params": "commentController.deleteComment",
+            "modelName": "comment"
+        },
+        {
+            "method": "put",
+            "api_url": "/comment",
+            "params": "commentController.updateComment",
+            "modelName": "comment"
+        },
+        {
+            "method": "get",
+            "api_url": "/comment/:id",
+            "params": "commentController.getComment",
+            "modelName": "comment"
+        },
+        {
+            "method": "get",
+            "api_url": "/comment",
+            "params": "commentController.getAllComment",
+            "modelName": "comment"
+        },
+        {
+            "method": "post",
+            "api_url": "/image",
+            "params": "imageController.createImage",
+            "modelName": "image"
+        },
+        {
+            "method": "delete",
+            "api_url": "/image/:id",
+            "params": "imageController.deleteImage",
+            "modelName": "image"
+        },
+        {
+            "method": "put",
+            "api_url": "/image",
+            "params": "imageController.updateImage",
+            "modelName": "image"
+        },
+        {
+            "method": "get",
+            "api_url": "/image/:id",
+            "params": "imageController.getImage",
+            "modelName": "image"
+        },
+        {
+            "method": "get",
+            "api_url": "/image",
+            "params": "imageController.getAllImage",
+            "modelName": "image"
+        },
+        {
+            "method": "post",
+            "api_url": "/post",
+            "params": "postController.createPost",
+            "modelName": "post"
+        },
+        {
+            "method": "delete",
+            "api_url": "/post/:id",
+            "params": "postController.deletePost",
+            "modelName": "post"
+        },
+        {
+            "method": "put",
+            "api_url": "/post",
+            "params": "postController.updatePost",
+            "modelName": "post"
+        },
+        {
+            "method": "get",
+            "api_url": "/post/:id",
+            "params": "postController.getPost",
+            "modelName": "post"
+        },
+        {
+            "method": "get",
+            "api_url": "/post",
+            "params": "postController.getAllPost",
+            "modelName": "post"
+        },
+        {
+            "method": "post",
+            "api_url": "/tag",
+            "params": "tagController.createTag",
+            "modelName": "tag"
+        },
+        {
+            "method": "delete",
+            "api_url": "/tag/:id",
+            "params": "tagController.deleteTag",
+            "modelName": "tag"
+        },
+        {
+            "method": "put",
+            "api_url": "/tag",
+            "params": "tagController.updateTag",
+            "modelName": "tag"
+        },
+        {
+            "method": "get",
+            "api_url": "/tag/:id",
+            "params": "tagController.getTag",
+            "modelName": "tag"
+        },
+        {
+            "method": "get",
+            "api_url": "/tag",
+            "params": "tagController.getAllTag",
+            "modelName": "tag"
+        },
+        {
+            "method": "post",
+            "api_url": "/post_comment",
+            "params": "postCommentController.createPostComment",
+            "modelName": "postComment"
+        },
+        {
+            "method": "delete",
+            "api_url": "/post_comment/:id",
+            "params": "postCommentController.deletePostComment",
+            "modelName": "postComment"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_comment/:id",
+            "params": "postCommentController.getPostComment",
+            "modelName": "postComment"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_comment",
+            "params": "postCommentController.getAllPostComment",
+            "modelName": "postComment"
+        },
+        {
+            "method": "post",
+            "api_url": "/post_like",
+            "params": "postLikeController.createPostLike",
+            "modelName": "postLike"
+        },
+        {
+            "method": "delete",
+            "api_url": "/post_like/:id",
+            "params": "postLikeController.deletePostLike",
+            "modelName": "postLike"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_like/:id",
+            "params": "postLikeController.getPostLike",
+            "modelName": "postLike"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_like",
+            "params": "postLikeController.getAllPostLike",
+            "modelName": "postLike"
+        },
+        {
+            "method": "post",
+            "api_url": "/post_read",
+            "params": "postReadController.createPostRead",
+            "modelName": "postRead"
+        },
+        {
+            "method": "delete",
+            "api_url": "/post_read/:id",
+            "params": "postReadController.deletePostRead",
+            "modelName": "postRead"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_read/:id",
+            "params": "postReadController.getPostRead",
+            "modelName": "postRead"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_read",
+            "params": "postReadController.getAllPostRead",
+            "modelName": "postRead"
+        },
+        {
+            "method": "post",
+            "api_url": "/post_tag",
+            "params": "postTagController.createPostTag",
+            "modelName": "postTag"
+        },
+        {
+            "method": "delete",
+            "api_url": "/post_tag/:id",
+            "params": "postTagController.deletePostTag",
+            "modelName": "postTag"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_tag/:id",
+            "params": "postTagController.getPostTag",
+            "modelName": "postTag"
+        },
+        {
+            "method": "get",
+            "api_url": "/post_tag",
+            "params": "postTagController.getAllPostTag",
+            "modelName": "postTag"
+        },
+        {
+            "method": "get",
+            "api_url": "/login",
+            "params": "userController.loginController",
+            "modelName": "user"
+        },
+        {
+            "method": "post",
+            "api_url": "/refresh",
+            "params": "userController.refreshController",
+            "modelName": "user"
+        },
+        {
+            "method": "post",
+            "api_url": "/register",
+            "params": "userController.createUser",
+            "modelName": "user"
+        },
+        {
+            "method": "post",
+            "api_url": "/user",
+            "params": "userController.createUser",
+            "modelName": "user"
+        },
+        {
+            "method": "get",
+            "api_url": "/user",
+            "params": "userController.getAllUser",
+            "modelName": "user"
+        },
+        {
+            "method": "put",
+            "api_url": "/user",
+            "params": "userController.updateUser",
+            "modelName": "user"
+        },
+        {
+            "method": "delete",
+            "api_url": "/user/:id",
+            "params": "userController.deleteUser",
+            "modelName": "user"
+        },
+        {
+            "method": "post",
+            "api_url": "/role",
+            "params": "roleController.createRole",
+            "modelName": "role"
+        },
+        {
+            "method": "delete",
+            "api_url": "/role/:id",
+            "params": "roleController.deleteRole",
+            "modelName": "role"
+        },
+        {
+            "method": "put",
+            "api_url": "/role",
+            "params": "roleController.updateRole",
+            "modelName": "role"
+        },
+        {
+            "method": "get",
+            "api_url": "/role/:id",
+            "params": "roleController.getRole",
+            "modelName": "role"
+        },
+        {
+            "method": "get",
+            "api_url": "/role",
+            "params": "roleController.getAllRole",
+            "modelName": "role"
+        },
+        {
+            "method": "post",
+            "api_url": "/permission",
+            "params": "permissionController.createPermission",
+            "modelName": "permission"
+        },
+        {
+            "method": "delete",
+            "api_url": "/permission/:id",
+            "params": "permissionController.deletePermission",
+            "modelName": "permission"
+        },
+        {
+            "method": "put",
+            "api_url": "/permission",
+            "params": "permissionController.updatePermission",
+            "modelName": "permission"
+        },
+        {
+            "method": "get",
+            "api_url": "/permission/:id",
+            "params": "permissionController.getPermission",
+            "modelName": "permission"
+        },
+        {
+            "method": "get",
+            "api_url": "/permission",
+            "params": "permissionController.getAllPermission",
+            "modelName": "permission"
+        },
+        {
+            "method": "post",
+            "api_url": "/roles/permissions",
+            "params": "rolePermissionController.createRolePermission",
+            "modelName": "rolePermission"
+        },
+        {
+            "method": "delete",
+            "api_url": "/roles/permissions/:id",
+            "params": "rolePermissionController.deleteRolePermission",
+            "modelName": "rolePermission"
+        },
+        {
+            "method": "put",
+            "api_url": "/roles/permissions",
+            "params": "rolePermissionController.updateRolePermission",
+            "modelName": "rolePermission"
+        },
+        {
+            "method": "get",
+            "api_url": "/roles/permissions/:id",
+            "params": "rolePermissionController.getRolePermission",
+            "modelName": "rolePermission"
+        },
+        {
+            "method": "get",
+            "api_url": "/roles/permissions",
+            "params": "rolePermissionController.getAllRolePermission",
+            "modelName": "rolePermission"
+        },
+        {
+            "method": "post",
+            "api_url": "/users/roles",
+            "params": "userRoleController.createUserRole",
+            "modelName": "userRole"
+        },
+        {
+            "method": "delete",
+            "api_url": "/users/roles/:id",
+            "params": "userRoleController.deleteUserRole",
+            "modelName": "userRole"
+        },
+        {
+            "method": "put",
+            "api_url": "/users/roles",
+            "params": "userRoleController.updateUserRole",
+            "modelName": "userRole"
+        },
+        {
+            "method": "get",
+            "api_url": "/users/roles/:id",
+            "params": "userRoleController.getUserRole",
+            "modelName": "userRole"
+        },
+        {
+            "method": "get",
+            "api_url": "/users/roles",
+            "params": "userRoleController.getAllUserRole",
+            "modelName": "userRole"
+        }
+    ]
+}

@@ -510,7 +510,7 @@
     }
   },
   "paths": {
-    "/user": {
+    "/user/:id": {
       "post": {
         "tags": [
           "user"

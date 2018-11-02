@@ -1,0 +1,3 @@
+api-list.json为路由扫描器生成
+api-models.json为模型扫描器生成
+通过以上文件最终生成api-doc.json

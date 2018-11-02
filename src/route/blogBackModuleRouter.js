@@ -19,7 +19,7 @@ const router = new Router(
         prefix: blogSetting.blog_admin_setting.prefix//每一个路由的前缀
     }
 );
-
+// ---swagger-doc-start---
 router
     .post('/comment', commentController.createComment)
     .delete('/comment/:id', commentController.deleteComment)
@@ -64,7 +64,7 @@ router
     .delete('/post_tag/:id', postTagController.deletePostTag)
     .get('/post_tag/:id', postTagController.getPostTag)
     .get('/post_tag', postTagController.getAllPostTag);
-
+// ---swagger-doc-end---
 export default {
     router: router,
 };

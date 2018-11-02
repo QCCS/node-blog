@@ -1,0 +1,17 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "测试扫描器",
+        "version": "1.0.0",
+        "title": "自动生成的文档"
+    },
+    "host": "localhost",
+    "basePath": "/api",
+    "tags": [],
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "definitions": {},
+    "paths": {}
+}

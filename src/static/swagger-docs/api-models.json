@@ -1,0 +1,343 @@
+{
+    "modelList": [
+        {
+            "access_token": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "access_token": {
+                    "allowNull": false
+                },
+                "client_id": {
+                    "allowNull": true
+                },
+                "expires": {
+                    "allowNull": false
+                }
+            }
+        },
+        {
+            "comment": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "comment": {
+                    "allowNull": true
+                }
+            }
+        },
+        {
+            "image": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "path": {
+                    "allowNull": false
+                },
+                "name": {
+                    "allowNull": true
+                },
+                "size": {
+                    "allowNull": true
+                }
+            }
+        },
+        {
+            "permission": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "name": {
+                    "allowNull": false
+                }
+            }
+        },
+        {
+            "post": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "title": {
+                    "allowNull": false
+                },
+                "desc": {
+                    "allowNull": false
+                },
+                "content": {
+                    "allowNull": false
+                },
+                "md_content": {
+                    "allowNull": true
+                },
+                "is_delete": {
+                    "allowNull": false
+                },
+                "is_draft": {
+                    "allowNull": false
+                }
+            }
+        },
+        {
+            "post_comment": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "post_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "post",
+                        "key": "id"
+                    }
+                },
+                "comment_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "comment",
+                        "key": "id"
+                    }
+                }
+            }
+        },
+        {
+            "post_like": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "post_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "post",
+                        "key": "id"
+                    }
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                }
+            }
+        },
+        {
+            "post_read": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "post_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "post",
+                        "key": "id"
+                    }
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                }
+            }
+        },
+        {
+            "post_tag": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "post_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "post",
+                        "key": "id"
+                    }
+                },
+                "tag_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "tag",
+                        "key": "id"
+                    }
+                }
+            }
+        },
+        {
+            "refresh_token": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "refresh_token": {
+                    "allowNull": false
+                },
+                "client_id": {
+                    "allowNull": true
+                },
+                "expires": {
+                    "allowNull": false
+                }
+            }
+        },
+        {
+            "role": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "name": {
+                    "allowNull": false,
+                    "unique": true
+                }
+            }
+        },
+        {
+            "role_permission": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "created_by": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "role_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "role",
+                        "key": "id"
+                    }
+                },
+                "permission_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "permission",
+                        "key": "id"
+                    }
+                }
+            }
+        },
+        {
+            "tag": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "tag": {
+                    "allowNull": false,
+                    "unique": true
+                }
+            }
+        },
+        {
+            "user": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "name": {
+                    "allowNull": false,
+                    "unique": true
+                },
+                "password": {
+                    "allowNull": false
+                },
+                "mobile": {
+                    "allowNull": false,
+                    "unique": true
+                },
+                "email": {
+                    "allowNull": true
+                },
+                "status": {
+                    "allowNull": true
+                },
+                "created_by": {
+                    "allowNull": true
+                }
+            }
+        },
+        {
+            "user_role": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "created_by": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "user",
+                        "key": "id"
+                    }
+                },
+                "role_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "role",
+                        "key": "id"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -13,9 +13,7 @@ let image = sequelize.define('image',
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                // This is a reference to another model
                 model: 'user',
-                // This is the column name of the referenced model
                 key: 'id',
             }
         },

@@ -115,6 +115,18 @@ var commandJson = {
         desc: "备份prod数据库",
         com: 'NODE_ENV=production node backup-db.js'
     },
+    apiList:{
+        desc: "生成 api-list 在静态 swagger 目录",
+        com: 'node src/utils/routerScanner.js'
+    },
+    apiModel:{
+        desc: "生成 api-models 在静态 swagger 目录",
+        com: 'node src/utils/modelScanner.js'
+    },
+    apiSwaggerDoc:{
+        desc: "用api-list.json与api-models.json生成 api-models-doc 在静态 swagger 目录",
+        com: 'node src/utils/swaggerScanner.js'
+    },
 }
 /*
 * 注意
