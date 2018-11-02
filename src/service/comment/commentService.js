@@ -56,60 +56,117 @@ async function createComment(user_id, content, post_id) {
 }
 
 async function deleteCommentByRoot(id) {
-    let res = await comment.destroy({
-        where: {
-            id,
-        }
-    });
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await comment.destroy({
+            where: {
+                id,
+            }
+        });
+    } catch (e) {
+        // console.error(e)
+    }
     return res;
 }
 
 async function deleteComment(id, user_id) {
-    let res = await comment.destroy({
-        where: {
-            id,
-            user_id,
-        }
-    });
     // sql
     // let res = await sequelize.query('DELETE * FROM permission WHERE id = ?');
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await comment.destroy({
+            where: {
+                id,
+                user_id,
+            }
+        });
+    } catch (e) {
+        // console.error(e)
+    }
     return res;
 }
 
 async function updateCommentByRoot(id, content) {
-    return await comment.update(
-        {
-            comment: content
-        },
-        {
-            where: {
-                id,
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await comment.update(
+            {
+                comment: content
+            },
+            {
+                where: {
+                    id,
+                }
             }
-        }
-    );
-
+        );
+    } catch (e) {
+        // console.error(e)
+    }
+    return res;
 }
 
 async function updateComment(id, user_id, content) {
-    return await comment.update(
-        {
-            comment: content
-        },
-        {
-            where: {
-                id,
-                user_id
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await comment.update(
+            {
+                comment: content
+            },
+            {
+                where: {
+                    id,
+                    user_id
+                }
             }
-        }
-    );
+        );
+    } catch (e) {
+        // console.error(e)
+    }
+    return res;
 }
 
 async function getComment(id) {
-    return await comment.findById(id);
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await comment.findById(id);
+    } catch (e) {
+        // console.error(e)
+    }
+    return res;
 }
 
 async function getAllComment() {
-    return await comment.findAll();
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await comment.findAll();
+    } catch (e) {
+        // console.error(e)
+    }
+    return res;
 }
 
 let commentService = {

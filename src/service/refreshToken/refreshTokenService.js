@@ -1,47 +1,98 @@
 import refreshToken from '../../models/refresh_token';
-async function createRefreshToken(user_id, refresh_token, client_id,expires) {
-    let res = await refreshToken.create(
-        {
-            user_id,
-            refresh_token,
-            client_id,
-            expires
-        },
 
-    );
+async function createRefreshToken(user_id, refresh_token, client_id, expires) {
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await refreshToken.create(
+            {
+                user_id,
+                refresh_token,
+                client_id,
+                expires
+            },
+        );
+    } catch (e) {
+        // console.error(e)
+    }
     return res;
+
 }
 
 async function deleteRefreshToken(user_id) {
-    let res = await refreshToken.destroy({
-        where: {
-            user_id
-        }
-    });
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await refreshToken.destroy({
+            where: {
+                user_id
+            }
+        });
+    } catch (e) {
+        // console.error(e)
+    }
     return res;
 }
 
 async function updateRefreshToken(user_id, id, refresh_token) {
-    let res = await refreshToken.update(
-        {
-            refresh_token: refresh_token
-        },
-        {
-            where: {
-                user_id,
-                id
+
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await refreshToken.update(
+            {
+                refresh_token: refresh_token
+            },
+            {
+                where: {
+                    user_id,
+                    id
+                }
             }
-        }
-    );
+        );
+    } catch (e) {
+        // console.error(e)
+    }
     return res;
 }
 
 async function getRefreshToken(id) {
-    return await refreshToken.findById(id);
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await refreshToken.findById(id);
+    } catch (e) {
+        // console.error(e)
+    }
+    return res;
+
 }
 
 async function getAllRefreshToken() {
-    return await refreshToken.findAll();
+
+    let res = {
+        status: 1,
+        message: 'FAILURE',
+        code: 1
+    };
+    try {
+        res = await refreshToken.findAll();
+    } catch (e) {
+        // console.error(e)
+    }
+    return res;
 }
 
 let refreshTokenService = {
