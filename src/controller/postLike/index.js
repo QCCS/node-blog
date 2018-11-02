@@ -1,4 +1,5 @@
-import postLikeService from '../../service/postLike/postLikeService';
+import service from '../../service';
+const postLikeService = service.postLikeService;
 async function createPostLike(ctx) {
     let data = ctx.request.body;
     console.log(data);
@@ -18,12 +19,12 @@ async function deletePostLike(ctx) {
 async function getPostLike(ctx) {
     let postLike = await postLikeService.getPostLike(ctx.params.id);
     ctx.body = postLike;
-    console.log(postLike)
+    console.log(postLike);
 }
 async function getAllPostLike(ctx) {
     let postLike = await postLikeService.getAllPostLike();
     ctx.body = postLike;
-    console.log(postLike)
+    console.log(postLike);
 }
 
 let postLikeController = {
@@ -31,5 +32,5 @@ let postLikeController = {
     deletePostLike,
     getPostLike,
     getAllPostLike
-}
+};
 export default postLikeController;

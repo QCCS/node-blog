@@ -31,6 +31,10 @@ let post = sequelize.define('post',
             type: Sequelize.TEXT,
             allowNull: false,
         },
+        md_content: {
+            type: Sequelize.TEXT,
+            allowNull: true,
+        },
         //是否删除
         is_delete: {
             type: Sequelize.TINYINT,//0，1

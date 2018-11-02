@@ -2,9 +2,10 @@
 import jwt from 'jsonwebtoken';
 //密码加密加盐
 import bcrypt from 'bcryptjs';
-import userService from '../../service/user/userService';
+import service from '../../service';
 import config from '../../config';
 import consoleNote from '../../utils/consoleNote';
+const userService = service.userService;
 //todo
 //需要是动态值
 const saltTimes = 10;

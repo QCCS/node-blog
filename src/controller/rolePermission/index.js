@@ -1,7 +1,7 @@
 //role rolePermission
 import consoleNote from '../../utils/consoleNote';
-import rolePermissionService from '../../service/rolePermission/rolePermissionService';
-
+import service from '../../service';
+const rolePermissionService = service.rolePermissionService;
 async function createRolePermission(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
@@ -11,8 +11,8 @@ async function createRolePermission(ctx) {
         ctx.body = rolePermission;
     } catch (e){
         rolePermission = {
-            err:"参数错误",
-            body:["role_id","permission_id"],
+            err:'参数错误',
+            body:['role_id','permission_id'],
         };
         consoleNote(e);
     } finally {

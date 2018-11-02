@@ -1,6 +1,7 @@
 // 博客前台
 // 后端渲染
-
+//todo
+//这块还需要转到控制器里面去
 import Router from 'koa-router';
 import postService from '../service/post/postService';
 import postCommentService from '../service/postComment/postCommentService';

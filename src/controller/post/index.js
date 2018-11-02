@@ -1,9 +1,10 @@
 // 博客 curd
-import postService from '../../service/post/postService';
-import postCommentService from '../../service/postComment/postCommentService';
-import postTagService from '../../service/postTag/postTagService';
-import postLikeService from '../../service/postLike/postLikeService';
-import postReadService from '../../service/postRead/postReadService';
+import service from '../../service';
+const postService = service.postService;
+const postCommentService = service.postCommentService;
+const postTagService = service.postTagService;
+const postLikeService = service.postLikeService;
+const postReadService = service.postReadService;
 async function createPost(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
@@ -13,6 +14,7 @@ async function createPost(ctx) {
         data.title,
         data.desc,
         data.content,
+        data.md_content,
         data.is_delete,
         data.is_draft
     );
@@ -55,13 +57,13 @@ async function getPost(ctx) {
         tags,
         likes,
         reads
-    }
+    };
 }
 
 async function getAllPost(ctx) {
     let post = await postService.getAllPost();
     ctx.body = post;
-    console.log(post)
+    console.log(post);
 }
 let postController = {
     createPost,
@@ -69,5 +71,5 @@ let postController = {
     updatePost,
     getPost,
     getAllPost
-}
+};
 export default postController;

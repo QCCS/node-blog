@@ -30,6 +30,10 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.TEXT
             },
+            md_content: {
+                type: Sequelize.TEXT,
+                allowNull: true,
+            },
             //是否删除
             is_delete:{
                 allowNull: false,

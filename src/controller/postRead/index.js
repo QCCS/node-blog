@@ -1,5 +1,5 @@
-import postReadService from '../../service/postRead/postReadService';
-
+import service from '../../service';
+const postReadService = service.postReadService;
 async function createPostRead(ctx) {
     let data = ctx.request.body;
     console.log(data);

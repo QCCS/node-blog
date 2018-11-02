@@ -1,6 +1,6 @@
 // 权限 curd
-import permissionService from '../../service/permission/permissionService';
-
+import service from '../../service';
+const permissionService = service.permissionService;
 async function createPermission(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;

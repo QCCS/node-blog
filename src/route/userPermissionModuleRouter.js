@@ -1,11 +1,15 @@
 //用户权限设计
 import Router from 'koa-router';
-import userController from '../controller/user';
-import permissionController from '../controller/permission';
-import roleController from '../controller/role';
-import rolePermissionController from '../controller/rolePermission';
-import userRoleController from '../controller/userRole';
+
+import controller from '../controller';
+const userController = controller.userController;
+const permissionController = controller.permissionController;
+const roleController = controller.roleController;
+const rolePermissionController = controller.rolePermissionController;
+const userRoleController = controller.userRoleController;
+
 import blogSetting from '../../settings/appSettings';
+
 // 路由配置
 const router = new Router(
     {

@@ -1,11 +1,12 @@
 import post from '../../models/post';
 
-async function createPost(user_id, title, desc, content, is_delete, is_draft) {
+async function createPost(user_id, title, desc, content, md_content,is_delete, is_draft) {
     let res = await post.create({
         user_id,
         title,
         desc,
         content,
+        md_content,
         is_delete,
         is_draft,
     });

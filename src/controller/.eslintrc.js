@@ -32,6 +32,7 @@ module.exports = {
             "error",
             "always"
         ],
+        "no-console":"off",
         // 禁止重复的 case 标签
         "no-duplicate-case": 2,
         // 禁止空语句块

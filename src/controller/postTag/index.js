@@ -1,6 +1,6 @@
 import consoleNote from '../../utils/consoleNote';
-import postTagService from '../../service/postTag/postTagService';
-
+import service from '../../service';
+const postTagService = service.postTagService;
 async function createPostTag(ctx) {
     let data = ctx.request.body;
     console.log(data);

@@ -1,8 +1,6 @@
 // 评论 curd
-import commentService from '../../service/comment/commentService';
-import postCommentService from '../../service/postComment/postCommentService';
-import db from '../../utils/sequelizeQuery';
-
+import service from '../../service';
+const commentService = service.commentService;
 async function createComment(ctx) {
     let data = ctx.request.body;
     let user = ctx.user;
