@@ -6,10 +6,22 @@ import middleware from './middleware';
 import controller from './controller';
 import config from './config/index';
 import router from './route';
+import consoleNote from './utils/consoleNote';
 // 路由实例
 const routerForAllow = new Router();
 // 创建服务实例
 const app = new Koa();
+
+//options 请求处理，全部给200,考虑放 validateToken 中间件里面
+app.use(async (ctx,next) => {
+    if(ctx.request.method==="OPTIONS"){
+        ctx.set('Access-Control-Allow-Origin', '*');
+        ctx.set('Cache-Control', 'no-cache');
+        consoleNote(JSON.stringify(ctx));
+    }else {
+        await next();
+    }
+});
 // 使用babel编译之后，输出的是跟路径，/
 console.log(__dirname);
 // 输出绝对路径
