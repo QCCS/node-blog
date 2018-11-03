@@ -13,6 +13,7 @@ const routerForAllow = new Router();
 const app = new Koa();
 
 //options 请求处理，全部给200,考虑放 validateToken 中间件里面
+//自动化测试的时候，或者在跨域情况下，会先options请求
 app.use(async (ctx,next) => {
     if(ctx.request.method==="OPTIONS"){
         ctx.set('Access-Control-Allow-Origin', '*');
