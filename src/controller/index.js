@@ -33,4 +33,4 @@ export default {
     tagController,
     userController,
     userRoleController,
-}
+};
