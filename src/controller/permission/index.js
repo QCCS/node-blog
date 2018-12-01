@@ -27,13 +27,13 @@ async function updatePermission(ctx) {
 async function getPermission(ctx) {
     let permission = await permissionService.getPermission(ctx.params.id);
     ctx.body = permission;
-    console.log(permission)
+    console.log(permission);
 }
 
 async function getAllPermission(ctx) {
     let permission = await permissionService.getAllPermission();
     ctx.body = permission;
-    console.log(permission)
+    console.log(permission);
 }
 
 let permissionController = {

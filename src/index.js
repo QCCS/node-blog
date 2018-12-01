@@ -7,6 +7,49 @@ import controller from './controller';
 import config from './config/index';
 import router from './route';
 import consoleNote from './utils/consoleNote';
+
+//start todo 使用redis存储token
+
+import redis from 'redis';
+import bluebird from 'bluebird';
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
+const client = redis.createClient();
+
+// if you'd like to select database 3, instead of 0 (default), call
+// client.select(3, function() { /* ... */ });
+
+client.on("error", function (err) {
+    console.log("Error " + err);
+});
+
+client.set("string key", "string val", redis.print);
+client.set("foo", "bar", redis.print);
+client.hset("hash key", "hashtest 1", "some value", redis.print);
+client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
+client.hkeys("hash key", function (err, replies) {
+    console.log(replies.length + " replies:");
+    replies.forEach(function (reply, i) {
+        console.log("    " + i + ": " + reply);
+    });
+    client.quit();
+});
+
+client.getAsync("foo").then(function(res) {
+    console.log(res); // => 'bar'
+});
+
+async function getFoo() {
+    let foo = await client.getAsync("foo");
+    return foo;
+}
+getFoo().then(res=>{
+    console.log(res); // => 'bar'
+});
+
+//end todo 使用redis存储token
+
+
 // 路由实例
 const routerForAllow = new Router();
 // 创建服务实例
