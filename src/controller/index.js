@@ -15,7 +15,8 @@ import rolePermissionController from './rolePermission';
 import tagController from './tag';
 import userController from './user';
 import userRoleController from './userRole';
-
+import teamController from './team';
+import teamUserController from './teamUser';
 export default {
     accessTokenController,
     commentController,
@@ -33,4 +34,6 @@ export default {
     tagController,
     userController,
     userRoleController,
+    teamController,
+    teamUserController,
 };

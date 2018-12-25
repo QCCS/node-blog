@@ -14,7 +14,8 @@ import rolePermissionService from './rolePermission';
 import tagService from './tag';
 import userService from './user';
 import userRoleService from './userRole';
-
+import teamService from './team';
+import teamUserService from './teamUser';
 export default {
     accessTokenService,
     commentService,
@@ -31,4 +32,6 @@ export default {
     tagService,
     userService,
     userRoleService,
+    teamService,
+    teamUserService
 };
