@@ -1,7 +1,7 @@
 //针对sequlize的配置
 const fs = require('fs');
-var data = fs.readFileSync('./settings/appSettings.js', 'utf8');
-var conf = JSON.parse(data.split("default")[1]);
+let data = fs.readFileSync('./settings/appSettings.js', 'utf8');
+let conf = JSON.parse(data.split("default")[1]);
 module.exports = {
     "development": {
         "host": conf.development.host,

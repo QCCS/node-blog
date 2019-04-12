@@ -1,4 +1,4 @@
-// import team from '../../models/team';
+import team from '../../models/team';
 
 async function createTeam() {
 

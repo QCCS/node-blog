@@ -3,3 +3,6 @@ install.js
 watchChange.js
 webpack.config.js
 backup-db.js
+
+src/
+test/

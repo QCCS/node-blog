@@ -2,11 +2,11 @@
  * Created by zhouli on 18/9/22
  * 开发的时候，监听文件变化，重新打包
  */
-var chokidar = require('chokidar');
-var controllerScanner = require ('./src/utils/controllerScanner');
-var serviceScanner = require ('./src/utils/serviceScanner');
+const chokidar = require('chokidar');
+const controllerScanner = require ('./src/utils/controllerScanner');
+const serviceScanner = require ('./src/utils/serviceScanner');
 //引入子进程模块，调用命令
-var process = require('child_process');
+const process = require('child_process');
 chokidar.watch('./src',{ignored:[/controller\/index\.js/, /service\/index\.js/]}).on('change', (event, path) => {
     console.log('控制器扫描：');
     controllerScanner.init();

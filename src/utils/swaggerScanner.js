@@ -1,10 +1,10 @@
-//通过模型与路由扫描器生成的文档，
+// 通过模型与路由扫描器生成的文档，
 // 再次扫描解析
-//生成最终文档,如何生成，参考doc.json
+// 生成最终文档,如何生成，参考 doc.json
 const fs = require('fs');
 let tpl = fs.readFileSync('src/static/swagger-docs/doc-tpl.json', 'utf8');
 // modelList是一个数组，把其中每一个元素，都在模板文件中definitions生成一个对象
-//还需要生成一个tag
+// 还需要生成一个tag
 let modelsList = fs.readFileSync('src/static/swagger-docs/api-models.json', 'utf8');
 // api-list 是一个数组，把其中每一个元素，都在模板文件中 paths 生成一个对象
 let apiList = fs.readFileSync('src/static/swagger-docs/api-list.json', 'utf8');
